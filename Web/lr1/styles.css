@@ -1,0 +1,274 @@
+body {
+    margin: 0;
+    font-family: "Franklin Gothic Heavy", cursive;
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-menu {
+    background-color: #131313;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.main-menu ul {
+    margin: 0;
+    display: inline-block;
+}
+
+.main-menu ul li {
+    float: left;
+    list-style: none;
+}
+
+.main-menu ul li a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 20px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.content{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    z-index: 1;
+    padding: 50px;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    background-color: #fff;
+    width: 500px;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: left;
+}
+
+.profile-image{
+    border-radius: 15px;
+    border: 8px solid #5957f9;
+    position: relative;
+    width: 484px;
+    text-align: center;
+}
+
+.name{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+}
+
+.group{
+    font-size: 16px;
+    color: black;
+    text-align: left;
+}
+
+.lr{
+    font-size: 14px;
+    color: white;
+    text-align: left;
+}
+
+.the-great-quote{
+    font-size: 40px;
+    color: white;
+    text-align: left;
+    quotes: "„" "“";
+    margin: 50px;
+    width: 40ch;
+}
+
+footer{
+    background-color: #5957f9;
+    text-align: center;
+    width: 100%;
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: auto;
+}
+
+.story{
+    font-size: 40px;
+    color: white;
+    text-align: left;
+    margin: 60px;
+    padding: 10px 50px 20px;
+    width: 25ch;
+}
+
+.story-image{
+    border-radius: 15px;
+    border: 8px solid #5957f9;
+    position: relative;
+    width: 450px;
+    text-align: center;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.menu{
+    top: 150px;
+    text-align: left;
+    position: fixed;
+    z-index: 2;
+}
+
+.menu ol{
+    margin: 5px;
+    text-align: left;
+}
+
+.menu ol li {
+    list-style: none;
+    margin: 5px;
+}
+
+.menu ol li a {
+    color: #f2f2f2;
+    text-align: left;
+    font-size: 24px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.block {
+    background-color: white;
+    width: auto;
+    border: 10px solid #5957f9;
+    border-radius: 50px;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.inter-image{
+    border-radius: 15px;
+    border: 8px solid #5957f9;
+    position: relative;
+    width: 450px;
+    text-align: center;
+}
+
+.text-container {
+    width: 50ch;
+    margin: 10px;
+}
+
+.main-item{
+    font-size: 50px;
+    color: black;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.sub-item{
+    font-size: 28px;
+    color: black;
+    text-align: left;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+.inter-text{
+    font-size: 18px;
+    color: grey;
+    text-align: left;
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+.album{
+
+}
+
+.album td{
+    border: 5px solid #5957f9;
+    border-radius: 10px;
+}
+
+.album-image{
+    width:100%;
+}
+
+.album-image-text{
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+.university {
+    font-size: 30px;
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+
+.disciplines{
+    margin-top: 30px;
+}
+.disciplines caption{
+    font-size: 30px;
+    color: white;
+    border: 5px solid #5957f9;
+}
+.disciplines td{
+    border: 5px solid #5957f9;
+    font-size: 30px;
+    color: white;
+}
+
+.disciplines th{
+    border: 5px solid #5957f9;
+    font-size: 30px;
+    color: white;
+}
+
+.input-string{
+    font-size: 40px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+input[type=radio] {
+    border: 0px;
+    width: 50px;
+    height: 2em;
+    margin-bottom: 30px;
+}
+
+.submit-button{
+    background-color: #5957f9;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+}
+
+select {
+    margin-bottom: 30px;
+    font-size: 35px;
+    border-radius: 10px;
+    float: right;
+    text-align: center;
+}
+
+form{
+    margin: auto;
+}
