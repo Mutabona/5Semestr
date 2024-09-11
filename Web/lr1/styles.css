@@ -242,7 +242,6 @@ footer{
     border-radius: 10px;
     color: black;
     text-align: center;
-    margin: auto;
     width: 100%;
 }
 
@@ -251,14 +250,16 @@ footer{
     border-radius: 10px;
     color: white;
     text-align: center;
-    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 input[type=radio] {
     border: 0px;
     width: 50px;
     height: 2em;
-    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .submit-button{
@@ -268,7 +269,8 @@ input[type=radio] {
     border-radius: 10px;
     height: 50px;
     width: 100%;
-    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 select {
@@ -277,7 +279,7 @@ select {
     border-radius: 10px;
     float: right;
     text-align: center;
-    width: 20%;
+    width: 40%;
 }
 
 form{
@@ -287,11 +289,31 @@ form{
 optgroup{
     color: black;
     font-size: 40px;
-    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 option{
     color: black;
     font-size: 36px;
-    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+textarea{
+    color: black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 40px;
+    float: right;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.reset-button{
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    height: 50px;
 }

@@ -23,7 +23,7 @@
             <label>
                 <input name="fio" placeholder="ФИО" class="input-string" required>
             </label>
-            <br>
+            <br><br>
             <label class="input-desc">Группа:
                 <select name="group" size="1" required>
                     <optgroup label="ИС">
@@ -36,7 +36,7 @@
                     </optgroup>
                 </select>
             </label>
-            <br>
+            <br><br><br>
             <label class="input-desc">При соединении в звезду фазные и линейные токи равны?</label>
             <br>
             <label class="input-desc">Да
@@ -48,11 +48,7 @@
             <label class="input-desc">Периодически
                 <input type="radio" name="q1" value="2" required>
             </label>
-            <br>
-            <label>
-                <input name="email" placeholder="Почта" class="input-string" type="email" required>
-            </label>
-            <br>
+            <br><br><br>
             <label class="input-desc">
                 В цепи синусоидального тока амперметр электромагнитной системы показал 0,5 А, тогда амплитуда этого тока Im равна…
                 <select name="q2" size="1" required>
@@ -63,13 +59,13 @@
                     <option value="4">0,45 A</option>
                 </select>
             </label>
-            <br>
+            <br><br><br>
             <label class="input-desc">
                 Столько это сколько?
-                <textarea name="q3" rows="4" cols="10">Ответ</textarea>
+                <textarea name="q3" rows="2" cols="50" placeholder="Ответ в развёрнутой форме"></textarea>
             </label>
             <br>
-            <button type="submit" class="submit-button">Отправить</button>
+            <button type="submit" class="submit-button" style="width: 50%">Отправить</button><button type="reset" class="reset-button" style="width: 50%">Очистить</button>
         </form>
     </div>
 </div>
