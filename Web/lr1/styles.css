@@ -240,16 +240,25 @@ footer{
 .input-string{
     font-size: 40px;
     border-radius: 10px;
+    color: black;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+
+.input-desc{
+    font-size: 40px;
+    border-radius: 10px;
     color: white;
     text-align: center;
-    margin-bottom: 30px;
+    margin: auto;
 }
 
 input[type=radio] {
     border: 0px;
     width: 50px;
     height: 2em;
-    margin-bottom: 30px;
+    margin: auto;
 }
 
 .submit-button{
@@ -259,16 +268,30 @@ input[type=radio] {
     border-radius: 10px;
     height: 50px;
     width: 100%;
+    margin: auto;
 }
 
 select {
-    margin-bottom: 30px;
+    margin: auto;
     font-size: 35px;
     border-radius: 10px;
     float: right;
     text-align: center;
+    width: 20%;
 }
 
 form{
+    margin: auto;
+}
+
+optgroup{
+    color: black;
+    font-size: 40px;
+    margin: auto;
+}
+
+option{
+    color: black;
+    font-size: 36px;
     margin: auto;
 }

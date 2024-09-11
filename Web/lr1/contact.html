@@ -21,25 +21,25 @@
     <div class="container">
         <form action="mailto:k_dod1@mail.ru" method="post">
             <label>
-                <input name="fio" placeholder="ФИО" class="input-string">
+                <input name="fio" placeholder="ФИО" class="input-string" required>
             </label>
             <br>
-            <label class="input-string">Мужской
-                <input type="radio" name="gender" value="male">
+            <label class="input-desc">Мужской
+                <input type="radio" name="gender" value="male" required>
             </label>
-            <label class="input-string">Женский
-                <input type="radio" name="gender" value="Female" >
+            <label class="input-desc">Женский
+                <input type="radio" name="gender" value="female" required>
             </label>
             <br>
-            <label class="input-string">Возраст
-                <select name="age" size="1">
+            <label class="input-desc">Возраст
+                <select name="age" size="1" required>
                     <option value="small" selected>Большой</option>
                     <option value="big">Маленький</option>
                 </select>
             </label>
             <br>
             <label>
-                <input name="email" placeholder="Почта" class="input-string" type="email">
+                <input name="email" placeholder="Почта" class="input-string" type="email" required>
             </label>
             <br>
             <button type="submit" class="submit-button">Отправить</button>
