@@ -100,6 +100,12 @@ body {
     quotes: "„" "“";
     margin: auto;
     width: 40ch;
+    animation: floater 1.5s infinite linear alternate;
+}
+
+@keyframes floater {
+    0%{transform: translateY(-10%)}
+    50%{transform: translateY(10%)}
 }
 
 footer{
