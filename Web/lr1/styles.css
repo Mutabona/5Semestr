@@ -2,7 +2,8 @@ body {
     margin: 0;
     font-family: "Franklin Gothic Heavy", cursive;
     background-color: black;
-    min-height: 100vh;
+    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -32,6 +33,15 @@ body {
     text-align: center;
     padding: 20px 20px;
     font-size: 24px;
+    text-decoration: none;
+}
+
+.main-menu ul li a.selected {
+    float: left;
+    color: #5957f9;
+    text-align: center;
+    padding: 20px 20px;
+    font-size: 28px;
     text-decoration: none;
 }
 
@@ -145,6 +155,14 @@ footer{
     margin: 5px;
 }
 
+.menu ol li a:active {
+    color: #5957f9;
+    text-align: left;
+    font-size: 28px;
+    text-decoration: none;
+    margin: 5px;
+}
+
 .block {
     background-color: white;
     width: auto;
@@ -201,13 +219,17 @@ footer{
 }
 
 .album-image{
-    width:100%;
+    position: relative;
+    max-width:100%;
+    height:50%;
 }
 
 .album-image-text{
-    font-size: 25px;
+    font-size: 26px;
     color: white;
     text-align: center;
+    width: 100%;
+    margin-top: auto;
 }
 
 .university {
