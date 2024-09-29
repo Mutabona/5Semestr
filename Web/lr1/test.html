@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Так себе сайт Донца Николая. Тест</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="scripts/validateQuestion.js"></script>
 </head>
 <body>
 <nav class="main-menu">
@@ -19,7 +20,7 @@
 </nav>
 <div class="content">
     <div class="container">
-        <form action="mailto:k_dod1@mail.ru" method="post">
+        <form action="mailto:k_dod1@mail.ru" method="post" onsubmit="return validateQuestion()">
             <label>
                 <input name="fio" placeholder="ФИО" class="input-string" required>
             </label>

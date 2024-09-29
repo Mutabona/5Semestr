@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Так себе сайт Донца Николая. Контакт</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="scripts/validateForm.js"></script>
 </head>
 <body>
 <nav class="main-menu">
@@ -19,9 +20,9 @@
 </nav>
 <div class="content">
     <div class="container">
-        <form action="mailto:k_dod1@mail.ru" method="post">
+        <form action="mailto:k_dod1@mail.ru" method="post" onsubmit="return validateForm()">
             <label>
-                <input name="fio" placeholder="ФИО" class="input-string" required>
+                <input name="fio" placeholder="ФИО" class="input-string" required/>
             </label>
             <br>
             <label class="input-desc">Мужской
@@ -41,6 +42,9 @@
             <br>
             <label>
                 <input name="email" placeholder="Почта" class="input-string" type="email" required>
+            </label>
+            <label>
+                <input name="phone" placeholder="Телефон" class="input-string" type="tel" required>
             </label>
             <br>
             <button type="submit" class="submit-button">Отправить</button>
