@@ -6,7 +6,7 @@ namespace ZadanieTests;
 public class StringExtensionTests
 {
     [Fact]
-    public void StringExtensions_ManySymbols_Between_TwoColons()
+    public void StringExtensionsTest5()
     {
         var source = ":kukaracha:";
         
@@ -16,7 +16,7 @@ public class StringExtensionTests
     }
     
     [Fact]
-    public void StringExtensions_ManySymbols_Between_ManyColons()
+    public void StringExtensionsTest6()
     {
         var source = ":kukaracha:azaza:";
         
@@ -26,7 +26,7 @@ public class StringExtensionTests
     }
     
     [Fact]
-    public void StringExtensions_ManySymbols_After_OneColon()
+    public void StringExtensionsTest4()
     {
         var source = ":kukaracha";
         
@@ -36,9 +36,9 @@ public class StringExtensionTests
     }
     
     [Fact]
-    public void StringExtensions_ManySymbols_Without_Colons()
+    public void StringExtensionsTest3()
     {
-        var source = "kukaracha";
+        var source = "abcde";
         
         var result = source.GetStringBetweenColons();
         
@@ -46,9 +46,19 @@ public class StringExtensionTests
     }
     
     [Fact]
-    public void StringExtensions_ManySymbols_Before_Colon()
+    public void StringExtensionsTest2()
     {
-        var source = "kukaracha:";
+        var source = ":";
+        
+        var result = source.GetStringBetweenColons();
+        
+        result.ShouldBeEmpty();
+    }
+    
+    [Fact]
+    public void StringExtensionsTest1()
+    {
+        var source = "a";
         
         var result = source.GetStringBetweenColons();
         
