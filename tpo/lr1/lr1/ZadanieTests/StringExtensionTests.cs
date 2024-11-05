@@ -7,7 +7,7 @@ namespace ZadanieTests;
 public class StringExtensionTests
 {
     private readonly ILogger _logger;
-    private static readonly string LogFilePath = "/home/mutabona/repos/5Semestr/tpo/lr1/lr1/StringExtensionsTestsLogs/log.log";
+    private static readonly string LogFilePath = "/home/mutabona/repos/5Semestr/tpo/lr3/StringExtensionsTestsLogs/log.log";
 
     public StringExtensionTests()
     {
@@ -18,88 +18,21 @@ public class StringExtensionTests
 
         _logger = Log.Logger;
     }
-
-    [Fact]
-    public void StringExtensionsTest1()
+    
+    [Theory]
+    [InlineData("a", "")]
+    [InlineData(":", "")]
+    [InlineData("abcde", "")]
+    [InlineData(":kukaracha", "kukaracha")]
+    [InlineData(":kukaracha:", "kukaracha")]
+    [InlineData(":kukaracha:azaza:", "kukaracha")]
+    public void StringExtensionsTest1(string source, string expectedResult)
     {
-        var source = "a";
-        var expectedResult = "";
-        
         var result = source.GetStringBetweenColons();
         
-        result.ShouldBeEmpty();
+        result.ShouldBeEquivalentTo(expectedResult);
         
         var logMessage = $"StringExtensionsTest1 - Source: {source}, Expected result : {expectedResult}, Result: {result}";
-        _logger.Information(logMessage);
-    }
-
-    [Fact]
-    public void StringExtensionsTest2()
-    {
-        var source = ":";
-        var expectedResult = "";
-        
-        var result = source.GetStringBetweenColons();
-        
-        result.ShouldBeEmpty();
-        
-        var logMessage = $"StringExtensionsTest2 - Source: {source}, Expected result : {expectedResult}, Result: {result}";
-        _logger.Information(logMessage);
-    }
-
-    [Fact]
-    public void StringExtensionsTest3()
-    {
-        var source = "abcde";
-        var expectedResult = "";
-        
-        var result = source.GetStringBetweenColons();
-        
-        result.ShouldBeEmpty();
-        
-        var logMessage = $"StringExtensionsTest3 - Source: {source}, Expected result : {expectedResult}, Result: {result}";
-        _logger.Information(logMessage);
-    }
-    
-    [Fact]
-    public void StringExtensionsTest4()
-    {
-        var source = ":kukaracha";
-        var expectedResult = "kukaracha";
-        
-        var result = source.GetStringBetweenColons();
-        
-        result.ShouldBeEquivalentTo(expectedResult);
-        
-        var logMessage = $"StringExtensionsTest4 - Source: {source}, Expected result : {expectedResult}, Result: {result}";
-        _logger.Information(logMessage);
-    }
-    
-    [Fact]
-    public void StringExtensionsTest5()
-    {
-        var source = ":kukaracha:";
-        var expectedResult = "kukaracha";
-        
-        var result = source.GetStringBetweenColons();
-        
-        result.ShouldBeEquivalentTo(expectedResult);
-        
-        var logMessage = $"StringExtensionsTest5 - Source: {source}, Expected result : {expectedResult}, Result: {result}";
-        _logger.Information(logMessage);
-    }
-    
-    [Fact]
-    public void StringExtensionsTest6()
-    {
-        var source = ":kukaracha:azaza:";
-        var expectedResult = "kukaracha";
-        
-        var result = source.GetStringBetweenColons();
-        
-        result.ShouldBeEquivalentTo(expectedResult);
-        
-        var logMessage = $"StringExtensionsTest6 - Source: {source}, Expected result : {expectedResult}, Result: {result}";
         _logger.Information(logMessage);
     }
 }
