@@ -7,7 +7,7 @@ namespace ZadanieTests;
 public class StringExtensionTests
 {
     private readonly ILogger _logger;
-    private static readonly string LogFilePath = "/home/mutabona/repos/5Semestr/tpo/lr1/lr1/ZadanieTests/StringExtensionsTestsLogs/log.log";
+    private static readonly string LogFilePath = "/home/mutabona/repos/5Semestr/tpo/lr1/lr1/StringExtensionsTestsLogs/log.log";
 
     public StringExtensionTests()
     {
