@@ -1,38 +1,44 @@
 ﻿using Serilog;
+using Serilog.Debugging;
+using Serilog.Events;
+using Serilog.Sinks.SystemConsole;
 using Shouldly;
 using Zadanie;
 
-namespace ZadanieTests;
-
-public class StringExtensionTests
+namespace ZadanieTests
 {
-    private readonly ILogger _logger;
-    private static readonly string LogFilePath = "/home/mutabona/repos/5Semestr/tpo/lr3/StringExtensionsTestsLogs/log.log";
-
-    public StringExtensionTests()
+    public class StringExtensionTests
     {
-        Log.Logger = new LoggerConfiguration()
-            .WriteTo.Console()
-            .WriteTo.File(LogFilePath, rollingInterval: RollingInterval.Day)
-            .CreateLogger();
+        private readonly ILogger _logger;
+        private static readonly string LogFilePath = "C:\\Users\\k_dod\\repos\\5Semestr\\tpo\\lr3\\StringExtensionsTestsLogs\\log.log";
 
-        _logger = Log.Logger;
-    }
-    
-    [Theory]
-    [InlineData("a", "")]
-    [InlineData(":", "")]
-    [InlineData("abcde", "")]
-    [InlineData(":kukaracha", "kukaracha")]
-    [InlineData(":kukaracha:", "kukaracha")]
-    [InlineData(":kukaracha:azaza:", "kukaracha")]
-    public void StringExtensionsTest1(string source, string expectedResult)
-    {
-        var result = source.GetStringBetweenColons();
         
-        result.ShouldBeEquivalentTo(expectedResult);
+        public StringExtensionTests()
+        {
+            Log.Logger = _logger = new LoggerConfiguration()
+                .MinimumLevel.Verbose()
+                .WriteTo.Console(standardErrorFromLevel: LogEventLevel.Verbose)
+                .WriteTo.File(LogFilePath)
+                .CreateLogger();
+        }
+
         
-        var logMessage = $"StringExtensionsTest1 - Source: {source}, Expected result : {expectedResult}, Result: {result}";
-        _logger.Information(logMessage);
+        [Theory]
+        [InlineData("a", "")]
+        [InlineData(":", "")]
+        [InlineData("abcde", "")]
+        [InlineData(":kukaracha", "kukaracha")]
+        [InlineData(":kukaracha:", "kukaracha")]
+        [InlineData(":kukaracha:azaza:", "kukaracha")]
+        public void StringExtensionsTest1(string source, string expectedResult)
+        {
+            var result = source.GetStringBetweenColons();
+            
+            result.ShouldBeEquivalentTo(expectedResult);
+            
+            var logMessage = $"StringExtensionsTest1 - Source: {source}, Expected result : {expectedResult}, Result: {result}";
+            _logger.Information(logMessage);
+            Log.CloseAndFlush();
+        }
     }
 }

@@ -1,0 +1,19 @@
+<mxfile host="Electron" modified="2024-10-23T07:44:57.754Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="-HUwhqTOQB_LOQAWUqYS" version="24.1.0" type="device">
+  <diagram name="Страница — 1" id="rqm6AFlFcoeYDzAMt_E8">
+    <mxGraphModel dx="1050" dy="669" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="5hOwrHi5-Et3rTQ9NOOK-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5hOwrHi5-Et3rTQ9NOOK-1" target="5hOwrHi5-Et3rTQ9NOOK-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5hOwrHi5-Et3rTQ9NOOK-1" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;1&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="340" y="80" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5hOwrHi5-Et3rTQ9NOOK-2" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;2&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="340" y="170" width="50" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
