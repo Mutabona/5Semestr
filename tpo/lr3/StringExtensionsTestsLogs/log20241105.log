@@ -1,6 +1,0 @@
-2024-11-05 21:57:13.288 +03:00 [INF] StringExtensionsTest1 - Source: a, Expected result : , Result: 
-2024-11-05 21:57:13.311 +03:00 [INF] StringExtensionsTest1 - Source: :kukaracha:, Expected result : kukaracha, Result: kukaracha
-2024-11-05 21:57:13.315 +03:00 [INF] StringExtensionsTest1 - Source: :, Expected result : , Result: 
-2024-11-05 21:57:13.318 +03:00 [INF] StringExtensionsTest1 - Source: abcde, Expected result : , Result: 
-2024-11-05 21:57:13.321 +03:00 [INF] StringExtensionsTest1 - Source: :kukaracha, Expected result : kukaracha, Result: kukaracha
-2024-11-05 21:57:13.324 +03:00 [INF] StringExtensionsTest1 - Source: :kukaracha:azaza:, Expected result : kukaracha, Result: kukaracha
