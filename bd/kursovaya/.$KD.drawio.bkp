@@ -1,0 +1,16 @@
+<mxfile host="Electron" modified="2024-11-10T22:31:22.374Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.1.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="SHsL2oTX7FKh78JABjp8" version="23.1.5" type="device">
+  <diagram name="Страница — 1" id="NR5RpQJqveBHWwWh6jQA">
+    <mxGraphModel dx="1434" dy="885" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="6r-G47WKYpbeX3emOWn6-22" value="Идентификатор (PK)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="140" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6r-G47WKYpbeX3emOWn6-24" value="Идентификатор истории болезни (FK)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="150" width="140" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
