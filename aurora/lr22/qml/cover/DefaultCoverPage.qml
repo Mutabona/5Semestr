@@ -43,7 +43,7 @@ CoverBackground {
 
     CoverPlaceholder {
         objectName: "placeholder"
-        text: qsTr("Template")
+        text: qsTr("lr22")
         icon {
             source: Qt.resolvedUrl("../icons/lr22.svg")
             sourceSize { width: icon.width; height: icon.height }

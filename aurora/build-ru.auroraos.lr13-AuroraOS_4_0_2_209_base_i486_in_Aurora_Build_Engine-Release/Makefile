@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = ru.auroraos.lr131.0.0
-DISTDIR = /c/Users/k_dod/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/.tmp/ru.auroraos.lr131.0.0
+DISTDIR = /c/Users/k_dod/repos/5Semestr/aurora/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/.tmp/ru.auroraos.lr131.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/usr/share/ru.auroraos.lr13/lib
 LIBS          = $(SUBLIBS) -lauroraapp -pie -rdynamic -lmdeclarativecache5 -lQt5Quick -lQt5Gui -lQt5Qml -lQt5Network -lQt5Core -lGLESv2 -lpthread 
@@ -436,9 +436,9 @@ main.o: ../lr13/src/main.cpp
 
 install_qm: first FORCE
 	@test -d $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/translations || mkdir -p $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/translations
-	lupdate -noobsolete /c/Users/k_dod/lr13/src /c/Users/k_dod/lr13/qml -ts /c/Users/k_dod/lr13/translations/ru.auroraos.lr13.ts /c/Users/k_dod/lr13/translations/ru.auroraos.lr13.ts /c/Users/k_dod/lr13/translations/ru.auroraos.lr13-ru.ts && mkdir -p translations && [ "/c/Users/k_dod/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release" != "/c/Users/k_dod/lr13" -a 1 -eq 1 ] && cp -af /c/Users/k_dod/lr13/translations/ru.auroraos.lr13.ts /c/Users/k_dod/lr13/translations/ru.auroraos.lr13-ru.ts /c/Users/k_dod/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations || : ; [ 1 -eq 1 ] && lrelease -nounfinished /c/Users/k_dod/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations/ru.auroraos.lr13.ts /c/Users/k_dod/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations/ru.auroraos.lr13-ru.ts || :
-	-$(INSTALL_FILE) /c/Users/k_dod/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations/ru.auroraos.lr13.qm $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/translations/
-	-$(INSTALL_FILE) /c/Users/k_dod/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations/ru.auroraos.lr13-ru.qm $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/translations/
+	lupdate -noobsolete /c/Users/k_dod/repos/5Semestr/aurora/lr13/src /c/Users/k_dod/repos/5Semestr/aurora/lr13/qml -ts /c/Users/k_dod/repos/5Semestr/aurora/lr13/translations/ru.auroraos.lr13.ts /c/Users/k_dod/repos/5Semestr/aurora/lr13/translations/ru.auroraos.lr13.ts /c/Users/k_dod/repos/5Semestr/aurora/lr13/translations/ru.auroraos.lr13-ru.ts && mkdir -p translations && [ "/c/Users/k_dod/repos/5Semestr/aurora/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release" != "/c/Users/k_dod/repos/5Semestr/aurora/lr13" -a 1 -eq 1 ] && cp -af /c/Users/k_dod/repos/5Semestr/aurora/lr13/translations/ru.auroraos.lr13.ts /c/Users/k_dod/repos/5Semestr/aurora/lr13/translations/ru.auroraos.lr13-ru.ts /c/Users/k_dod/repos/5Semestr/aurora/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations || : ; [ 1 -eq 1 ] && lrelease -nounfinished /c/Users/k_dod/repos/5Semestr/aurora/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations/ru.auroraos.lr13.ts /c/Users/k_dod/repos/5Semestr/aurora/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations/ru.auroraos.lr13-ru.ts || :
+	-$(INSTALL_FILE) /c/Users/k_dod/repos/5Semestr/aurora/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations/ru.auroraos.lr13.qm $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/translations/
+	-$(INSTALL_FILE) /c/Users/k_dod/repos/5Semestr/aurora/build-ru.auroraos.lr13-AuroraOS_4_0_2_209_base_i486_in_Aurora_Build_Engine-Release/translations/ru.auroraos.lr13-ru.qm $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/translations/
 
 uninstall_qm: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/translations/ru.auroraos.lr13-ru.qm
@@ -448,7 +448,7 @@ uninstall_qm: FORCE
 
 install_qml: first FORCE
 	@test -d $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13 || mkdir -p $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13
-	-$(INSTALL_DIR) /c/Users/k_dod/lr13/qml $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/
+	-$(INSTALL_DIR) /c/Users/k_dod/repos/5Semestr/aurora/lr13/qml $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/
 
 uninstall_qml: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/share/ru.auroraos.lr13/qml
@@ -467,7 +467,7 @@ uninstall_target: FORCE
 
 install_desktop: first FORCE
 	@test -d $(INSTALL_ROOT)/usr/share/applications || mkdir -p $(INSTALL_ROOT)/usr/share/applications
-	-$(INSTALL_FILE) /c/Users/k_dod/lr13/ru.auroraos.lr13.desktop $(INSTALL_ROOT)/usr/share/applications/
+	-$(INSTALL_FILE) /c/Users/k_dod/repos/5Semestr/aurora/lr13/ru.auroraos.lr13.desktop $(INSTALL_ROOT)/usr/share/applications/
 
 uninstall_desktop: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/share/applications/ru.auroraos.lr13.desktop
@@ -476,7 +476,7 @@ uninstall_desktop: FORCE
 
 install_icon86x86: first FORCE
 	@test -d $(INSTALL_ROOT)/usr/share/icons/hicolor/86x86/apps || mkdir -p $(INSTALL_ROOT)/usr/share/icons/hicolor/86x86/apps
-	-$(INSTALL_FILE) /c/Users/k_dod/lr13/icons/86x86/ru.auroraos.lr13.png $(INSTALL_ROOT)/usr/share/icons/hicolor/86x86/apps/
+	-$(INSTALL_FILE) /c/Users/k_dod/repos/5Semestr/aurora/lr13/icons/86x86/ru.auroraos.lr13.png $(INSTALL_ROOT)/usr/share/icons/hicolor/86x86/apps/
 
 uninstall_icon86x86: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/share/icons/hicolor/86x86/apps/ru.auroraos.lr13.png
@@ -485,7 +485,7 @@ uninstall_icon86x86: FORCE
 
 install_icon108x108: first FORCE
 	@test -d $(INSTALL_ROOT)/usr/share/icons/hicolor/108x108/apps || mkdir -p $(INSTALL_ROOT)/usr/share/icons/hicolor/108x108/apps
-	-$(INSTALL_FILE) /c/Users/k_dod/lr13/icons/108x108/ru.auroraos.lr13.png $(INSTALL_ROOT)/usr/share/icons/hicolor/108x108/apps/
+	-$(INSTALL_FILE) /c/Users/k_dod/repos/5Semestr/aurora/lr13/icons/108x108/ru.auroraos.lr13.png $(INSTALL_ROOT)/usr/share/icons/hicolor/108x108/apps/
 
 uninstall_icon108x108: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/share/icons/hicolor/108x108/apps/ru.auroraos.lr13.png
@@ -494,7 +494,7 @@ uninstall_icon108x108: FORCE
 
 install_icon128x128: first FORCE
 	@test -d $(INSTALL_ROOT)/usr/share/icons/hicolor/128x128/apps || mkdir -p $(INSTALL_ROOT)/usr/share/icons/hicolor/128x128/apps
-	-$(INSTALL_FILE) /c/Users/k_dod/lr13/icons/128x128/ru.auroraos.lr13.png $(INSTALL_ROOT)/usr/share/icons/hicolor/128x128/apps/
+	-$(INSTALL_FILE) /c/Users/k_dod/repos/5Semestr/aurora/lr13/icons/128x128/ru.auroraos.lr13.png $(INSTALL_ROOT)/usr/share/icons/hicolor/128x128/apps/
 
 uninstall_icon128x128: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/share/icons/hicolor/128x128/apps/ru.auroraos.lr13.png
@@ -503,7 +503,7 @@ uninstall_icon128x128: FORCE
 
 install_icon172x172: first FORCE
 	@test -d $(INSTALL_ROOT)/usr/share/icons/hicolor/172x172/apps || mkdir -p $(INSTALL_ROOT)/usr/share/icons/hicolor/172x172/apps
-	-$(INSTALL_FILE) /c/Users/k_dod/lr13/icons/172x172/ru.auroraos.lr13.png $(INSTALL_ROOT)/usr/share/icons/hicolor/172x172/apps/
+	-$(INSTALL_FILE) /c/Users/k_dod/repos/5Semestr/aurora/lr13/icons/172x172/ru.auroraos.lr13.png $(INSTALL_ROOT)/usr/share/icons/hicolor/172x172/apps/
 
 uninstall_icon172x172: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/share/icons/hicolor/172x172/apps/ru.auroraos.lr13.png
