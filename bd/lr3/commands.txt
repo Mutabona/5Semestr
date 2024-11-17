@@ -1,5 +1,7 @@
 docker run --name LibraryDb -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=librarydb -d postgres
 
+cat LibraryDb.sql | docker exec -i LibraryDb psql -U postgres
+
 create sequence RubricatorCode_gen;
 create sequence BooksCode_gen;
 create sequence ReaderId_gen;
@@ -177,6 +179,23 @@ insert into Books (rubricator, name, author, publisher, publish_year, pages, cos
 (13, 'Учебник по программированию', 'Лукина С.С.', 'ДМК Пресс', 2022, 410, 600.0, 'учебник'),
 (14, 'Справочник по математике', 'Орлова И.И.', 'Высшая школа', 1952, 475, 700.0, 'справочник'),
 (15, 'Руководство по фотографии', 'Тихонов А.А.', 'Эксмо', 1952, 360, 550.0, null);
+
+insert into season_tickets (reader, book, start_date, end_date) values
+(1, 2, '2024-01-10', '2024-02-10'),
+(2, 3, '2024-02-15', '2024-03-15'),
+(3, 4, '2024-03-20', '2024-04-20'),
+(4, 5, '2024-04-25', '2024-05-25'),
+(5, 6, '2024-05-30', '2024-06-30'),
+(6, 7, '2024-07-05', '2024-08-05'),
+(7, 8, '2024-08-10', '2024-09-10'),
+(8, 9, '2024-09-15', '2024-10-15'),
+(9, 10, '2024-10-20', '2024-11-20'),
+(10, 11, '2024-11-25', '2024-12-25'),
+(11, 12, '2024-12-30', '2025-01-30'),
+(12, 13, '2025-02-05', '2025-03-05'),
+(13, 14, '2025-03-10', '2025-04-10'),
+(14, 15, '2025-04-15', '2025-05-15'),
+(15, 1, '2025-05-20', '2025-06-20');
 
 select make_report('Books'::varchar(30), 1);
 
