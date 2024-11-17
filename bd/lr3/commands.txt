@@ -1,0 +1,196 @@
+docker run --name LibraryDb -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=librarydb -d postgres
+
+create sequence RubricatorCode_gen;
+create sequence BooksCode_gen;
+create sequence ReaderId_gen;
+
+create table Rubricators (
+    code integer default nextval('rubricatorcode_gen') PRIMARY KEY,
+    name varchar(30) not null
+);
+
+create table Books (
+    code integer default nextval('bookscode_gen') PRIMARY KEY,
+    rubricator integer not null,
+    name varchar(40) not null,
+    author varchar(100) not null,
+    publisher varchar(30) not null,
+    publish_year integer not null,
+    pages integer not null,
+    cost float not null,
+    note varchar(100),
+    FOREIGN KEY(rubricator) REFERENCES rubricators(code)
+);
+
+create table readers (
+    id integer default nextval('readerid_gen') PRIMARY KEY,
+    fio varchar(30) not null,
+    address varchar(40) not null,
+    birthdate date not null,
+    gender char(1) not null,
+    phone char(12) not null,
+    passport char(12) not null
+);
+
+create table season_tickets (
+    reader integer not null,
+    book integer not null,
+    start_date date not null,
+    end_date date not null,
+    FOREIGN KEY (reader) REFERENCES readers(id),
+    FOREIGN KEY (book) REFERENCES books(code)
+);
+
+create function is_old(publish_date integer, note varchar(100)) returns varchar language plpgsql as
+    $$
+    begin
+        if note = 'учебник' then
+            if date_part('year', current_date) - publish_date >= 20 then
+                return 'старое издание';
+            else return '';
+            end if;
+        elseif note = 'справочник' then
+            if date_part('year', current_date) - publish_date >= 10 then
+                return 'старое издание';
+            else return '';
+            end if;
+        else
+            if date_part('year', current_date) - publish_date >= 30 then
+                return 'старое издание';
+            else return '';
+            end if;
+        end if;
+    end;
+    $$
+    
+    create table report (
+    rubric_name varchar(30),
+    author varchar(100),
+    book_name varchar(40),
+    publish_year integer,
+    publisher varchar(30),
+    note varchar
+);
+
+create function make_report(rubric_name varchar(30), mode integer) returns void language plpgsql as
+    $$
+    declare rec record;
+    begin
+        if mode = 0 then
+            delete from report;
+        end if;
+        for rec in ( select rubricators.name as rubric_name, author, books.name as book_name, publish_year, publisher, note
+                           from rubricators join books on rubricators.code = books.rubricator where rubricators.name = rubric_name)
+        loop
+            insert into report
+            values (rec.rubric_name, rec.author, rec.book_name, rec.publish_year, rec.publisher, is_old(rec.publish_year, rec.note));
+            end loop;
+    end;
+    $$
+   
+
+create function check_book_insert() returns trigger language plpgsql as
+    $$
+    begin
+        if new.publish_year is null then
+            new.publish_year := date_part('year', current_date);
+        elseif new.publish_year < 1950 or new.publish_year > date_part('year', current_date) then
+            raise exception 'Год публикации должен быть между 1950 и настоящим годом';
+        end if;
+        if new.pages < 10 or new.pages > 2000 then
+            raise exception 'Количество страниц должно быть меньше 2000 и больше 10';
+        end if;
+        return new;
+    end;
+    $$
+    
+create trigger check_new_book
+    before insert or update on books
+    for each row execute procedure check_book_insert();
+    
+create table rubricators_old(
+    code integer,
+    name varchar(30),
+    username varchar,
+    date date
+);
+
+create function store_old_rubricators() returns trigger language plpgsql as
+    $$
+    begin
+        insert into rubricators_old values (old.code, old.name, current_user, current_date);
+        return new;
+    end;
+    $$
+
+create trigger store_rubricators_data
+    before update on rubricators
+    for each row execute procedure store_old_rubricators();
+    
+insert into Rubricators (name) values
+('Tech Gadgets'),
+('Books'),
+('Home Appliances'),
+('Software'),
+('Music Instruments'),
+('Sports Equipment'),
+('Clothing'),
+('Toys'),
+('Movies'),
+('Games'),
+('Furniture'),
+('Jewelry'),
+('Beauty Products'),
+('Pet Supplies'),
+('Office Supplies');
+
+insert into readers (fio, address, birthdate, gender, phone, passport) values
+('Иван Иванов', 'ул. Пушкина, д. 10', '1990-05-21', 'M', '79991234567', '4509 123456'),
+('Мария Петрова', 'ул. Ленина, д. 25', '1985-11-15', 'F', '79997654321', '4509 654321'),
+('Алексей Смирнов', 'пр. Гагарина, д. 3', '1992-02-10', 'M', '79993456789', '4510 987654'),
+('Ольга Сидорова', 'ул. Чехова, д. 12', '1994-07-22', 'F', '79992345678', '4510 876543'),
+('Павел Орлов', 'ул. Маяковского, д. 7', '1988-03-30', 'M', '79994561234', '4511 765432'),
+('Наталья Кузнецова', 'ул. Свердлова, д. 14', '1991-08-19', 'F', '79995612345', '4511 654321'),
+('Дмитрий Соколов', 'ул. Герцена, д. 9', '1987-04-12', 'M', '79993456780', '4512 543210'),
+('Елена Ковалева', 'ул. Гоголя, д. 2', '1995-12-05', 'F', '79997865432', '4512 432109'),
+('Максим Лебедев', 'ул. Тургенева, д. 8', '1993-06-11', 'M', '79991233456', '4513 321098'),
+('Анна Миронова', 'ул. Шевченко, д. 15', '1996-09-23', 'F', '79994567890', '4513 210987'),
+('Владимир Крылов', 'ул. Кутузова, д. 19', '1990-01-17', 'M', '79992345679', '4514 109876'),
+('Ирина Котова', 'ул. Жукова, д. 4', '1989-05-25', 'F', '79996789012', '4514 098765'),
+('Сергей Новиков', 'ул. Толстого, д. 6', '1986-11-02', 'M', '79997865431', '4515 987654'),
+('Татьяна Боброва', 'ул. Ясная, д. 13', '1992-03-21', 'F', '79993456788', '4515 876543'),
+('Андрей Быков', 'ул. Лесная, д. 5', '1994-07-14', 'M', '79991234568', '4516 765432');
+
+insert into Books (rubricator, name, author, publisher, publish_year, pages, cost, note) values
+(1, 'Учебник математики', 'Иванов И.И.', 'Просвещение', 2020, 300, 500.0, 'учебник'),
+(2, 'Справочник по физике', 'Петров П.П.', 'Наука', 2019, 450, 700.0, 'справочник'),
+(3, 'Литературный роман', 'Сидоров С.С.', 'Пальмира', 2021, 350, 400.0, null),
+(4, 'История искусств', 'Кузнецова А.А.', 'АСТ', 2018, 600, 900.0, null),
+(5, 'Биология', 'Лебедев В.В.', 'Эксмо', 2017, 320, 450.0, 'учебник'),
+(6, 'Справочник по химии', 'Миронова Т.Т.', 'Мир', 2016, 500, 800.0, 'справочник'),
+(7, 'Программирование на Python', 'Крылов К.К.', 'БХВ', 2022, 480, 650.0, null),
+(8, 'Кулинарная книга', 'Боброва Н.Н.', 'Рипол Классик', 2020, 250, 300.0, null),
+(9, 'Путеводитель по городам', 'Быков А.А.', 'Вече', 2019, 275, 350.0, null),
+(10, 'Философия', 'Котова Е.Е.', 'КноРус', 2021, 400, 600.0, null),
+(11, 'Основы геометрии', 'Новиков В.В.', 'Феникс', 2018, 300, 500.0, 'учебник'),
+(12, 'Руководство по медицине', 'Соколов П.П.', 'ГЭОТАР-Медиа', 2017, 540, 750.0, null),
+(13, 'Учебник по программированию', 'Лукина С.С.', 'ДМК Пресс', 2022, 410, 600.0, 'учебник'),
+(14, 'Справочник по математике', 'Орлова И.И.', 'Высшая школа', 1952, 475, 700.0, 'справочник'),
+(15, 'Руководство по фотографии', 'Тихонов А.А.', 'Эксмо', 1952, 360, 550.0, null);
+
+select make_report('Books'::varchar(30), 1);
+
+select make_report('Pet Supplies'::varchar(30), 0);
+
+insert into Books (rubricator, name, author, publisher, publish_year, pages, cost, note) values
+(15, 'Руководство по танцам', 'Тихонов А.А.', 'Эксмо', null, 360, 550.0, null);
+
+insert into Books (rubricator, name, author, publisher, publish_year, pages, cost, note) values
+(15, 'Руководство по танцам', 'Тихонов А.А.', 'Эксмо', null, 2500, 550.0, null);
+
+insert into Books (rubricator, name, author, publisher, publish_year, pages, cost, note) values
+(15, 'Руководство по танцам', 'Тихонов А.А.', 'Эксмо', 1900, 200, 550.0, null);
+
+update rubricators set name = 'Electronic Devices' where code = 1;
+
+
