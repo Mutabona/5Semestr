@@ -1,9 +1,9 @@
 body {
-    margin: 0;
     font-family: "Franklin Gothic Heavy", cursive;
     background-color: black;
-    height: 100vh;
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -13,50 +13,114 @@ body {
     text-align: center;
     width: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
     overflow: hidden;
     z-index: 2;
 }
 
 .main-menu ul {
     margin: 0;
+    padding: 0;
     display: inline-block;
 }
 
 .main-menu ul li {
     float: left;
     list-style: none;
+    position: relative;
 }
 
 .main-menu ul li a {
-    float: left;
     color: #f2f2f2;
     text-align: center;
     padding: 20px 20px;
     font-size: 24px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.main-menu ul li a img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    transition: transform 0.3s, content 0.3s;
 }
 
 .main-menu ul li a.selected {
-    float: left;
     color: #5957f9;
-    text-align: center;
-    padding: 20px 20px;
     font-size: 28px;
+}
+
+.main-menu ul li:hover a img {
+    transform: scale(1.2);
+}
+
+.main-menu .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #131313;
+    min-width: 200px;
+    z-index: 3;
+}
+
+.main-menu .dropdown li {
+    float: none;
+    border-bottom: 1px solid #575757;
+}
+
+.main-menu .dropdown li a {
+    padding: 12px 16px;
+    font-size: 20px;
+    color: #f2f2f2;
     text-decoration: none;
+    display: block;
+    background-color: #131313;
 }
 
-.content{
-    margin-top: 100px;
+
+.content {
+    flex: 1;
+    margin-top: 150px;
     margin-bottom: 50px;
-    z-index: 1;
     padding: 50px;
+    z-index: 1;
 }
 
-.container{
+footer {
+    background-color: #5957f9;
+    text-align: center;
+    width: 100%;
+    font-size: 19px;
+    font-weight: bold;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.container {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .card{
     background-color: #fff;
@@ -106,15 +170,6 @@ body {
 @keyframes floater {
     0%{transform: translateY(-10%)}
     50%{transform: translateY(10%)}
-}
-
-footer{
-    background-color: #5957f9;
-    text-align: center;
-    width: 100%;
-    font-size: 19px;
-    font-weight: bold;
-    margin-top: auto;
 }
 
 .story{

@@ -8,15 +8,23 @@
 <body>
 <nav class="main-menu">
     <ul>
-        <li><a href="index.html" class="selected">Главная</a></li>
-        <li><a href="autobiography.html">Обо мне</a></li>
-        <li><a href="interests.html">Мои интересы</a></li>
-        <li><a href="study.html">Учёба</a></li>
-        <li><a href="album.html">Фотоальбом</a></li>
-        <li><a href="contact.html">Контакт</a></li>
-        <li><a href="test.html">Тест</a></li>
+        <li class="selected"><a href="index.html"><img src="images/menu/menuout.png" alt="Главная иконка">Главная</a></li>
+        <li><a href="autobiography.html"><img src="images/menu/menuover.png" alt="Обо мне иконка">Обо мне</a></li>
+        <li class="has-dropdown"><a href="interests.html"><img src="images/menu/menuover.png" alt="Мои интересы иконка">Мои интересы</a>
+            <ul class="dropdown">
+                <li><a href="sports.html">Спорт</a></li>
+                <li><a href="music.html">Музыка</a></li>
+                <li><a href="travel.html">Путешествия</a></li>
+            </ul>
+        </li>
+        <li><a href="study.html"><img src="images/menu/menuover.png" alt="Учёба иконка">Учёба</a></li>
+        <li><a href="album.html"><img src="images/menu/menuover.png" alt="Фотоальбом иконка">Фотоальбом</a></li>
+        <li><a href="contact.html"><img src="images/menu/menuover.png" alt="Контакт иконка">Контакт</a></li>
+        <li><a href="test.html"><img src="images/menu/menuover.png" alt="Тест иконка">Тест</a></li>
     </ul>
 </nav>
+<script src="scripts/menuImageChanger.js"></script>
+<script src="scripts/dropdownMenu.js"></script>
 <div class="content">
     <div class="container">
         <div><p class="the-great-quote">
@@ -34,7 +42,7 @@
 <footer>
     <div class="container">
         <p class="lr">Лабораторная работа №1</p>
-        <q class="lr"><i>Исследование возможностей языка разметки гипертекстов HTML и каскадных таблиц стилей CSS</i></q>
+            <q class="lr"><i>Исследование возможностей языка разметки гипертекстов HTML и каскадных таблиц стилей CSS</i></q>
     </div>
 </footer>
 </body>
