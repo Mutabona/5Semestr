@@ -15,7 +15,6 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    overflow: hidden;
     z-index: 2;
 }
 
@@ -23,6 +22,7 @@ body {
     margin: 0;
     padding: 0;
     display: inline-block;
+    position: relative;
 }
 
 .main-menu ul li {
@@ -48,7 +48,7 @@ body {
     transition: transform 0.3s, content 0.3s;
 }
 
-.main-menu ul li a.selected {
+.main-menu ul li.selected a {
     color: #5957f9;
     font-size: 28px;
 }
@@ -63,24 +63,30 @@ body {
     top: 100%;
     left: 0;
     background-color: #131313;
-    min-width: 200px;
     z-index: 3;
+    width: 100%;
+    color: white;
 }
 
 .main-menu .dropdown li {
     float: none;
-    border-bottom: 1px solid #575757;
+    border: 1px solid #575757;
+    width: 100%;
+    color: white;
 }
 
 .main-menu .dropdown li a {
     padding: 12px 16px;
     font-size: 20px;
-    color: #f2f2f2;
+    color: white !important;
     text-decoration: none;
     display: block;
     background-color: #131313;
 }
 
+.main-menu ul li:hover .dropdown {
+    display: block;
+}
 
 .content {
     flex: 1;
@@ -96,8 +102,8 @@ footer {
     width: 100%;
     font-size: 19px;
     font-weight: bold;
-    padding: 20px 0;
-    margin-top: auto;
+    padding: 0;
+    height: 4vh;
 }
 
 .container {
@@ -108,19 +114,6 @@ footer {
     margin: 0 auto;
     padding: 0 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .card{
     background-color: #fff;
@@ -178,7 +171,7 @@ footer {
     text-align: left;
     margin: 60px;
     padding: 10px 50px 20px;
-    width: 25ch;
+    width: 50vw;
 }
 
 .story-image{
@@ -187,8 +180,8 @@ footer {
     position: relative;
     width: 450px;
     text-align: center;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .menu{
