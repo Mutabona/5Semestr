@@ -16,25 +16,28 @@ body {
     top: 0;
     left: 0;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .main-menu ul {
     margin: 0;
     padding: 0;
-    display: inline-block;
-    position: relative;
+    display: flex;
+    list-style: none;
+    justify-content: center;
 }
 
 .main-menu ul li {
-    float: left;
-    list-style: none;
     position: relative;
 }
 
 .main-menu ul li a {
     color: #f2f2f2;
     text-align: center;
-    padding: 20px 20px;
+    padding: 20px;
     font-size: 24px;
     text-decoration: none;
     display: flex;
@@ -45,7 +48,7 @@ body {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    transition: transform 0.3s, content 0.3s;
+    transition: transform 0.3s;
 }
 
 .main-menu ul li.selected a {
@@ -63,16 +66,14 @@ body {
     top: 100%;
     left: 0;
     background-color: #131313;
-    z-index: 3;
+    min-width: 200px;
     width: 100%;
-    color: white;
+    z-index: 3;
 }
 
 .main-menu .dropdown li {
     float: none;
     border: 1px solid #575757;
-    width: 100%;
-    color: white;
 }
 
 .main-menu .dropdown li a {
@@ -86,6 +87,13 @@ body {
 
 .main-menu ul li:hover .dropdown {
     display: block;
+}
+
+.main-menu .datetime {
+    color: #f2f2f2;
+    font-size: 18px;
+    padding: 10px 20px;
+    text-align: center;
 }
 
 .content {
@@ -102,8 +110,8 @@ footer {
     width: 100%;
     font-size: 19px;
     font-weight: bold;
-    padding: 0;
-    height: 4vh;
+    padding: 20px 0;
+    margin-top: auto;
 }
 
 .container {
@@ -114,6 +122,8 @@ footer {
     margin: 0 auto;
     padding: 0 20px;
 }
+
+
 
 .card{
     background-color: #fff;
