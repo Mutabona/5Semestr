@@ -69,12 +69,6 @@ function addBirthdateField() {
     closeButton.onclick = toggleCalendar;
     buttonContainer.appendChild(closeButton);
 
-    // Create a button to confirm the date
-    const confirmButton = document.createElement('button');
-    confirmButton.innerText = 'Выбрать';
-    confirmButton.onclick = confirmDate;
-    buttonContainer.appendChild(confirmButton);
-
     birthdateDiv.appendChild(buttonContainer);
 
     // Set current date
@@ -136,6 +130,7 @@ function selectDay(dayElement) {
         previouslySelected.classList.remove('selected');
     }
     dayElement.classList.add('selected');
+    confirmDate();
 }
 
 // Function to update days based on selected month and year
@@ -186,4 +181,5 @@ function updateDays() {
 document.getElementById('birthdate-input').addEventListener('click', toggleCalendar);
 
 // Call function to add birth date fields on page load
-window.onload = addBirthdateField;
+document.addEventListener('DOMContentLoaded', () => {addBirthdateField()})
+//window.onload = addBirthdateField;
