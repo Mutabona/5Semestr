@@ -43,6 +43,12 @@
                 <input type="radio" name="gender" value="female" required>
             </label>
             <br>
+            <label class="birthdate-label">Дата рождения
+                <input id="birthdate-input" type="text" readonly placeholder="Дата" class="birthdate-input" required>
+            </label>
+            <div id="birthdate" class="calendar"></div>
+            <script src="scripts/calendar.js"></script>
+            <br>
             <label class="input-desc">Возраст
                 <select name="age" size="1" required>
                     <option value="" selected>Не выбран</option>
@@ -57,12 +63,6 @@
             <label>
                 <input name="phone" placeholder="Телефон" class="input-string" type="tel" required>
             </label>
-            <br>
-            <label class="birthdate-label">Дата рождения
-                <input id="birthdate-input" type="text" readonly placeholder="Дата" class="birthdate-input" required>
-            </label>
-            <div id="birthdate" class="calendar"></div>
-            <script src="scripts/calendar.js"></script>
             <br>
             <button type="submit" class="submit-button">Отправить</button>
         </form>
