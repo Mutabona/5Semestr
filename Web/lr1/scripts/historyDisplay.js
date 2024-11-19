@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const sessionHistory = JSON.parse(localStorage.getItem('sessionHistory')) || {};
+    const sessionHistory = JSON.parse(sessionStorage.getItem('sessionHistory')) || {};
     const allTimeHistory = JSON.parse(getCookie('allTimeHistory')) || {};
 
     const sessionTbody = document.querySelector('#sessionHistory tbody');

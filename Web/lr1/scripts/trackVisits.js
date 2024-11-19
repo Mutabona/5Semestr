@@ -1,7 +1,7 @@
 function updateSessionHistory(page) {
-    const sessionHistory = JSON.parse(localStorage.getItem('sessionHistory')) || {};
+    const sessionHistory = JSON.parse(sessionStorage.getItem('sessionHistory')) || {};
     sessionHistory[page] = (sessionHistory[page] || 0) + 1;
-    localStorage.setItem('sessionHistory', JSON.stringify(sessionHistory));
+    sessionStorage.setItem('sessionHistory', JSON.stringify(sessionHistory));
     console.log("Session History Updated:", sessionHistory);
 }
 
@@ -16,35 +16,6 @@ function updateHistory(page) {
     updateSessionHistory(page);
     updateAllTimeHistory(page);
 }
-
-let pageVisible = true;
-let formSubmit = false;
-let linkClick = false;
-
-document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') {
-        pageVisible = false;
-    } else {
-        pageVisible = true;
-    }
-});
-
-document.addEventListener('submit', (event) => {
-    formSubmit = true;
-});
-
-document.addEventListener('click', (event) => {
-    if (event.target.tagName === 'A' && event.target.href) {
-        linkClick = true;
-    }
-});
-
-window.addEventListener('beforeunload', (event) => {
-    if (!formSubmit && !linkClick) {
-        console.log('Clearing session history from localStorage.'); // Отладочное сообщение
-        localStorage.removeItem('sessionHistory');
-    }
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     const page = window.location.pathname;
