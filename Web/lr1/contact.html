@@ -36,10 +36,10 @@
                 <input name="fio" placeholder="ФИО" class="input-string" required/>
             </label>
             <br>
-            <label class="input-desc">Мужской
+            <label class="input-desc">Я мужик
                 <input type="radio" name="gender" value="male" required>
             </label>
-            <label class="input-desc">Женский
+            <label class="input-desc">Я дама
                 <input type="radio" name="gender" value="female" required>
             </label>
             <br>
@@ -57,6 +57,12 @@
             <label>
                 <input name="phone" placeholder="Телефон" class="input-string" type="tel" required>
             </label>
+            <br>
+            <label class="birthdate-label">Дата рождения
+                <input id="birthdate-input" type="text" readonly placeholder="Дата" class="birthdate-input" required>
+            </label>
+            <div id="birthdate" class="calendar"></div>
+            <script src="scripts/calendar.js"></script>
             <br>
             <button type="submit" class="submit-button">Отправить</button>
         </form>

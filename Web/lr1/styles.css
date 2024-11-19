@@ -3,7 +3,7 @@ body {
     background-color: black;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    height: 99vh;
     display: flex;
     flex-direction: column;
 }
@@ -110,8 +110,8 @@ footer {
     width: 100%;
     font-size: 19px;
     font-weight: bold;
-    padding: 20px 0;
-    margin-top: auto;
+    margin-top: 0;
+    height: 4vh;
 }
 
 .container {
@@ -122,8 +122,6 @@ footer {
     margin: 0 auto;
     padding: 0 20px;
 }
-
-
 
 .card{
     background-color: #fff;
@@ -327,32 +325,173 @@ footer {
     border-collapse: collapse;
 }
 
-.input-string{
+form {
+    margin: auto;
+}
+
+optgroup {
+    color: black;
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+option {
+    color: black;
+    font-size: 36px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+select {
+    margin: auto;
+    font-size: 35px;
+    border-radius: 10px;
+    text-align: center;
+    width: 48%;
+}
+
+.calendar {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 1000;
+    width: 100%;
+    max-width: 300px;
+    top: 60px;
+    left: 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.header-container select {
+    font-size: 25px;
+    border-radius: 10px;
+    text-align: center;
+    width: 48%;
+}
+
+.header-container option {
+    background-color: #f0f0f0;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 2px 0;
+}
+
+.header-container option:hover {
+    background-color: #5957f9;
+    color: white;
+}
+
+.calendar .weekday-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.calendar .weekday {
+    width: calc(100% / 7);
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.calendar .day-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.calendar .day {
+    width: calc(100% / 7 - 4px);
+    height: 30px;
+    margin: 2px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+.calendar .day.empty {
+    visibility: hidden;
+}
+
+.calendar .day:hover, .calendar .day.selected {
+    background-color: #5957f9;
+    color: white;
+}
+
+.calendar label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.calendar button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #5957f9;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.calendar button:hover {
+    background-color: #0056b3;
+}
+
+#birthdate-input {
+    cursor: pointer;
+}
+
+.input-string {
     font-size: 40px;
     border-radius: 10px;
     color: black;
     text-align: center;
     width: 100%;
+    margin-top: 10px;
 }
 
-.input-desc{
+.input-desc {
     font-size: 40px;
     border-radius: 10px;
     color: white;
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
     margin-top: 20px;
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
 }
 
 input[type=radio] {
     border: 0px;
     width: 50px;
     height: 2em;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
-.submit-button{
+.submit-button {
     background-color: #5957f9;
     font-size: 20px;
     color: white;
@@ -363,31 +502,28 @@ input[type=radio] {
     margin-top: 20px;
 }
 
-select {
-    margin: auto;
-    font-size: 35px;
-    border-radius: 10px;
-    float: right;
-    text-align: center;
-    width: 40%;
-}
-
-form{
-    margin: auto;
-}
-
-optgroup{
-    color: black;
+.birthdate-input {
     font-size: 40px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+    width: 30%;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    position: relative;
 }
 
-option{
-    color: black;
-    font-size: 36px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+.birthdate-label {
+    font-size: 40px;
+    color: white;
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
 }
 
 textarea{
