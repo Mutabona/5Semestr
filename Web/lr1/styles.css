@@ -610,3 +610,53 @@ button {
     max-width: 90%;
     max-height: 90%;
 }
+
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.table-wrapper {
+    flex: 1;
+    margin: 0px;
+}
+
+.table-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.table-wrapper {
+    flex: 1;
+    margin: 10px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+.table, .table th, .table td {
+    border: 1px solid #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.table td {
+    background-color: #444;
+    color: #fff;
+}
+
+.table-title {
+    color: #fff;
+    text-align: center;
+    margin: 10px 0;
+}

@@ -1,17 +1,14 @@
 function showImage(src) {
-    // Создание нового div для большого фото
     var largePhotoDiv = document.createElement('div');
     largePhotoDiv.className = 'large-photo-container';
     largePhotoDiv.innerHTML = '<img src="' + src + '" alt="Большое фото">';
 
-    // Обработчик события для закрытия большого фото по клику вне его
     largePhotoDiv.addEventListener('click', function(event) {
         if (event.target === largePhotoDiv) {
             document.body.removeChild(largePhotoDiv);
         }
     });
 
-    // Добавление нового div на экран
     document.body.appendChild(largePhotoDiv);
 }
 

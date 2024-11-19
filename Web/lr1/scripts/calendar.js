@@ -1,14 +1,9 @@
-// calendar.js
-
-// Function to add birth date fields to calendar div
 function addBirthdateField() {
     const birthdateDiv = document.getElementById('birthdate');
 
-    // Create a container for month and year select elements
     const headerContainer = document.createElement('div');
     headerContainer.className = 'header-container';
 
-    // Create month select element
     const monthSelect = document.createElement('select');
     monthSelect.name = 'month';
     monthSelect.required = true;
@@ -28,7 +23,6 @@ function addBirthdateField() {
     `;
     headerContainer.appendChild(monthSelect);
 
-    // Create year select element
     const yearSelect = document.createElement('select');
     yearSelect.name = 'year';
     yearSelect.required = true;
@@ -41,7 +35,6 @@ function addBirthdateField() {
 
     birthdateDiv.appendChild(headerContainer);
 
-    // Create weekday names
     const weekdayContainer = document.createElement('div');
     weekdayContainer.className = 'weekday-container';
     const weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
@@ -53,17 +46,14 @@ function addBirthdateField() {
     });
     birthdateDiv.appendChild(weekdayContainer);
 
-    // Create days using div elements
     const dayContainer = document.createElement('div');
     dayContainer.className = 'day-container';
     dayContainer.id = 'day-container';
     birthdateDiv.appendChild(dayContainer);
 
-    // Create a container for buttons
     const buttonContainer = document.createElement('div');
     buttonContainer.className = 'button-container';
 
-    // Create a button to close the calendar
     const closeButton = document.createElement('button');
     closeButton.innerText = 'Закрыть';
     closeButton.onclick = toggleCalendar;
@@ -71,15 +61,12 @@ function addBirthdateField() {
 
     birthdateDiv.appendChild(buttonContainer);
 
-    // Set current date
     setCurrentDate();
 
-    // Add event listeners to month and year select elements
     monthSelect.addEventListener('change', updateDays);
     yearSelect.addEventListener('change', updateDays);
 }
 
-// Function to set the current date in the calendar
 function setCurrentDate() {
     const now = new Date();
     const currentMonth = String(now.getMonth() + 1).padStart(2, '0');
@@ -96,7 +83,6 @@ function setCurrentDate() {
     }
 }
 
-// Function to show or hide the calendar
 function toggleCalendar() {
     const calendar = document.getElementById('birthdate');
     if (calendar.style.display === 'block') {
@@ -109,7 +95,6 @@ function toggleCalendar() {
     }
 }
 
-// Function to confirm and display the selected date
 function confirmDate() {
     const month = document.querySelector('select[name="month"]').value;
     const day = document.querySelector('.day.selected')?.innerText;
@@ -123,7 +108,6 @@ function confirmDate() {
     }
 }
 
-// Function to select a day
 function selectDay(dayElement) {
     const previouslySelected = document.querySelector('.day.selected');
     if (previouslySelected) {
@@ -133,7 +117,6 @@ function selectDay(dayElement) {
     confirmDate();
 }
 
-// Function to update days based on selected month and year
 function updateDays() {
     const month = document.querySelector('select[name="month"]').value;
     const year = document.querySelector('select[name="year"]').value;
@@ -150,7 +133,6 @@ function updateDays() {
 
     dayContainer.innerHTML = '';
 
-    // Add empty divs for the previous month's days
     for (let i = 0; i < adjustedFirstDay; i++) {
         const emptyDiv = document.createElement('div');
         emptyDiv.className = 'day empty';
@@ -165,7 +147,6 @@ function updateDays() {
         dayContainer.appendChild(dayDiv);
     }
 
-    // Add empty divs to ensure the last row is properly aligned
     const totalSlots = adjustedFirstDay + daysInMonth;
     const remainingSlots = totalSlots % 7;
     if (remainingSlots > 0) {
@@ -177,9 +158,6 @@ function updateDays() {
     }
 }
 
-// Add event listener to input field
 document.getElementById('birthdate-input').addEventListener('click', toggleCalendar);
 
-// Call function to add birth date fields on page load
 document.addEventListener('DOMContentLoaded', () => {addBirthdateField()})
-//window.onload = addBirthdateField;

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>История просмотра</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="main-menu">
+  <ul>
+    <li><a href="index.html"><img src="images/menu/menuover.png">Главная</a></li>
+    <li><a href="autobiography.html"><img src="images/menu/menuover.png">Обо мне</a></li>
+    <li class="has-dropdown"><a href="interests.html"><img src="images/menu/menuover.png">Мои интересы</a>
+      <ul class="dropdown">
+        <li><a href="interests.html#hobby"><img src="images/menu/menuover.png">Хобби</a></li>
+        <li><a href="interests.html#books"><img src="images/menu/menuover.png">Книги</a></li>
+        <li><a href="interests.html#music"><img src="images/menu/menuover.png">Музыка</a></li>
+        <li><a href="interests.html#films"><img src="images/menu/menuover.png">Фильмы</a></li>
+      </ul>
+    </li>
+    <li><a href="study.html"><img src="images/menu/menuover.png">Учёба</a></li>
+    <li><a href="album.html"><img src="images/menu/menuout.png">Фотоальбом</a></li>
+    <li><a href="contact.html"><img src="images/menu/menuover.png">Контакт</a></li>
+    <li><a href="test.html"><img src="images/menu/menuover.png">Тест</a></li>
+    <li class="selected"><a href="history.html"><img src="images/menu/menuover.png">История просмотра</a></li>
+  </ul>
+  <div id="datetime" class="datetime"></div>
+  <script src="scripts/updateDateTime.js"></script>
+  <script src="scripts/cookieUtils.js"></script>
+  <script src="scripts/trackVisits.js"></script>
+</nav>
+<h1>История просмотра</h1>
+<div class="table-container">
+  <div class="table-wrapper">
+    <h2 class="table-title">История текущего сеанса</h2>
+    <table id="sessionHistory" class="table">
+      <thead>
+      <tr>
+        <th>Страница</th>
+        <th>Количество посещений</th>
+      </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="table-wrapper">
+    <h2 class="table-title">История за все время</h2>
+    <table id="allTimeHistory" class="table">
+      <thead>
+      <tr>
+        <th>Страница</th>
+        <th>Количество посещений</th>
+      </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+<script src="scripts/historyDisplay.js"></script>
+</body>
+</html>
