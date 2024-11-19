@@ -13,7 +13,6 @@ function addBirthdateField() {
     monthSelect.name = 'month';
     monthSelect.required = true;
     monthSelect.innerHTML = `
-        <option value="" selected>Месяц</option>
         <option value="01">Январь</option>
         <option value="02">Февраль</option>
         <option value="03">Март</option>
@@ -27,7 +26,6 @@ function addBirthdateField() {
         <option value="11">Ноябрь</option>
         <option value="12">Декабрь</option>
     `;
-    monthSelect.addEventListener('change', updateDays);
     headerContainer.appendChild(monthSelect);
 
     // Create year select element
@@ -39,7 +37,6 @@ function addBirthdateField() {
     for (let i = currentYear; i >= currentYear - 100; i--) {
         yearSelect.innerHTML += `<option value="${i}">${i}</option>`;
     }
-    yearSelect.addEventListener('change', updateDays);
     headerContainer.appendChild(yearSelect);
 
     birthdateDiv.appendChild(headerContainer);
@@ -62,8 +59,6 @@ function addBirthdateField() {
     dayContainer.id = 'day-container';
     birthdateDiv.appendChild(dayContainer);
 
-    updateDays();
-
     // Create a container for buttons
     const buttonContainer = document.createElement('div');
     buttonContainer.className = 'button-container';
@@ -81,6 +76,30 @@ function addBirthdateField() {
     buttonContainer.appendChild(confirmButton);
 
     birthdateDiv.appendChild(buttonContainer);
+
+    // Set current date
+    setCurrentDate();
+
+    // Add event listeners to month and year select elements
+    monthSelect.addEventListener('change', updateDays);
+    yearSelect.addEventListener('change', updateDays);
+}
+
+// Function to set the current date in the calendar
+function setCurrentDate() {
+    const now = new Date();
+    const currentMonth = String(now.getMonth() + 1).padStart(2, '0');
+    const currentYear = String(now.getFullYear());
+    const currentDay = String(now.getDate()).padStart(2, '0');
+
+    document.querySelector('select[name="month"]').value = currentMonth;
+    document.querySelector('select[name="year"]').value = currentYear;
+    updateDays();
+
+    const dayElement = Array.from(document.querySelectorAll('.day')).find(day => day.innerText === currentDay);
+    if (dayElement) {
+        dayElement.classList.add('selected');
+    }
 }
 
 // Function to show or hide the calendar

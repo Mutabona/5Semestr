@@ -389,6 +389,7 @@ select {
     padding: 5px;
     border-radius: 5px;
     margin: 2px 0;
+    font-size: 25px;
 }
 
 .header-container option:hover {
