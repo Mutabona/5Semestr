@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.auroraos.lr43
+Exec=/usr/bin/ru.auroraos.lr43
+Name=lr43
+Name[ru]=Шаблон
+
+[X-Application]
+Permissions=
+OrganizationName=ru.auroraos
+ApplicationName=lr43
+ExecDBus=/usr/bin/ru.auroraos.lr43

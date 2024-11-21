@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.auroraos.lr32
+Exec=/usr/bin/ru.auroraos.lr32
+Name=lr32
+Name[ru]=Шаблон
+
+[X-Application]
+Permissions=
+OrganizationName=ru.auroraos
+ApplicationName=lr32
+ExecDBus=/usr/bin/ru.auroraos.lr32

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.auroraos.lr41
+Exec=/usr/bin/ru.auroraos.lr41
+Name=lr41
+Name[ru]=Шаблон
+
+[X-Application]
+Permissions=Audio;UserDirs
+OrganizationName=ru.auroraos
+ApplicationName=lr41
+ExecDBus=/usr/bin/ru.auroraos.lr41
