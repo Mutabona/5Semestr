@@ -1,70 +1,72 @@
 function addBirthdateField() {
-    const birthdateDiv = document.getElementById('birthdate');
+    const $birthdateDiv = $('#birthdate');
 
-    const headerContainer = document.createElement('div');
-    headerContainer.className = 'header-container';
+    const $headerContainer = $('<div>', { class: 'header-container' });
 
-    const monthSelect = document.createElement('select');
-    monthSelect.name = 'month';
-    monthSelect.required = true;
-    monthSelect.innerHTML = `
-        <option value="01">Январь</option>
-        <option value="02">Февраль</option>
-        <option value="03">Март</option>
-        <option value="04">Апрель</option>
-        <option value="05">Май</option>
-        <option value="06">Июнь</option>
-        <option value="07">Июль</option>
-        <option value="08">Август</option>
-        <option value="09">Сентябрь</option>
-        <option value="10">Октябрь</option>
-        <option value="11">Ноябрь</option>
-        <option value="12">Декабрь</option>
-    `;
-    headerContainer.appendChild(monthSelect);
+    const $monthSelect = $('<select>', {
+        name: 'month',
+        required: true,
+        html: `
+            <option value="01">Январь</option>
+            <option value="02">Февраль</option>
+            <option value="03">Март</option>
+            <option value="04">Апрель</option>
+            <option value="05">Май</option>
+            <option value="06">Июнь</option>
+            <option value="07">Июль</option>
+            <option value="08">Август</option>
+            <option value="09">Сентябрь</option>
+            <option value="10">Октябрь</option>
+            <option value="11">Ноябрь</option>
+            <option value="12">Декабрь</option>
+        `
+    });
+    $headerContainer.append($monthSelect);
 
-    const yearSelect = document.createElement('select');
-    yearSelect.name = 'year';
-    yearSelect.required = true;
-    yearSelect.innerHTML = '<option value="" selected>Год</option>';
+    const $yearSelect = $('<select>', {
+        name: 'year',
+        required: true,
+        html: '<option value="" selected>Год</option>'
+    });
     const currentYear = new Date().getFullYear();
     for (let i = currentYear; i >= currentYear - 100; i--) {
-        yearSelect.innerHTML += `<option value="${i}">${i}</option>`;
+        $yearSelect.append(`<option value="${i}">${i}</option>`);
     }
-    headerContainer.appendChild(yearSelect);
+    $headerContainer.append($yearSelect);
 
-    birthdateDiv.appendChild(headerContainer);
+    $birthdateDiv.append($headerContainer);
 
-    const weekdayContainer = document.createElement('div');
-    weekdayContainer.className = 'weekday-container';
+    const $weekdayContainer = $('<div>', { class: 'weekday-container' });
     const weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
     weekdays.forEach(weekday => {
-        const dayElement = document.createElement('div');
-        dayElement.className = 'weekday';
-        dayElement.innerText = weekday;
-        weekdayContainer.appendChild(dayElement);
+        const $dayElement = $('<div>', {
+            class: 'weekday',
+            text: weekday
+        });
+        $weekdayContainer.append($dayElement);
     });
-    birthdateDiv.appendChild(weekdayContainer);
+    $birthdateDiv.append($weekdayContainer);
 
-    const dayContainer = document.createElement('div');
-    dayContainer.className = 'day-container';
-    dayContainer.id = 'day-container';
-    birthdateDiv.appendChild(dayContainer);
+    const $dayContainer = $('<div>', {
+        class: 'day-container',
+        id: 'day-container'
+    });
+    $birthdateDiv.append($dayContainer);
 
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'button-container';
+    const $buttonContainer = $('<div>', { class: 'button-container' });
 
-    const closeButton = document.createElement('button');
-    closeButton.innerText = 'Закрыть';
-    closeButton.onclick = toggleCalendar;
-    buttonContainer.appendChild(closeButton);
+    const $closeButton = $('<button>', {
+        text: 'Закрыть',
+        click: toggleCalendar
+    });
+    $buttonContainer.append($closeButton);
 
-    birthdateDiv.appendChild(buttonContainer);
+    $birthdateDiv.append($buttonContainer);
 
     setCurrentDate();
 
-    monthSelect.addEventListener('change', updateDays);
-    yearSelect.addEventListener('change', updateDays);
+    $monthSelect.on('change', updateDays);
+    $yearSelect.on('change', updateDays);
 }
 
 function setCurrentDate() {
@@ -73,91 +75,93 @@ function setCurrentDate() {
     const currentYear = String(now.getFullYear());
     const currentDay = String(now.getDate()).padStart(2, '0');
 
-    document.querySelector('select[name="month"]').value = currentMonth;
-    document.querySelector('select[name="year"]').value = currentYear;
+    $('select[name="month"]').val(currentMonth);
+    $('select[name="year"]').val(currentYear);
     updateDays();
 
-    const dayElement = Array.from(document.querySelectorAll('.day')).find(day => day.innerText === currentDay);
-    if (dayElement) {
-        dayElement.classList.add('selected');
+    const $dayElement = $('.day').filter(function() {
+        return $(this).text() === currentDay;
+    });
+    if ($dayElement.length) {
+        $dayElement.addClass('selected');
     }
 }
 
 function toggleCalendar() {
-    const calendar = document.getElementById('birthdate');
-    if (calendar.style.display === 'block') {
-        calendar.style.display = 'none';
+    const $calendar = $('#birthdate');
+    const $birthdateInput = $('#birthdate-input');
+    if ($calendar.is(':visible')) {
+        $calendar.hide();
     } else {
-        calendar.style.display = 'block';
-        const birthdateInput = document.getElementById('birthdate-input');
-        calendar.style.top = `${birthdateInput.offsetTop + birthdateInput.offsetHeight}px`;
-        calendar.style.left = `${birthdateInput.offsetLeft}px`;
+        $calendar.css({
+            display: 'block',
+            top: $birthdateInput.offset().top + $birthdateInput.outerHeight(),
+            left: $birthdateInput.offset().left
+        });
     }
 }
 
 function confirmDate() {
-    const month = document.querySelector('select[name="month"]').value;
-    const day = document.querySelector('.day.selected')?.innerText;
-    const year = document.querySelector('select[name="year"]').value;
+    const month = $('select[name="month"]').val();
+    const day = $('.day.selected').text();
+    const year = $('select[name="year"]').val();
 
     if (month && day && year) {
-        document.getElementById('birthdate-input').value = `${month}/${day}/${year}`;
+        $('#birthdate-input').val(`${month}/${day}/${year}`);
         toggleCalendar();
     } else {
         alert("Пожалуйста, выберите полную дату.");
     }
 }
 
-function selectDay(dayElement) {
-    const previouslySelected = document.querySelector('.day.selected');
-    if (previouslySelected) {
-        previouslySelected.classList.remove('selected');
-    }
-    dayElement.classList.add('selected');
+function selectDay($dayElement) {
+    $('.day.selected').removeClass('selected');
+    $dayElement.addClass('selected');
     confirmDate();
 }
 
 function updateDays() {
-    const month = document.querySelector('select[name="month"]').value;
-    const year = document.querySelector('select[name="year"]').value;
-    const dayContainer = document.getElementById('day-container');
+    const month = $('select[name="month"]').val();
+    const year = $('select[name="year"]').val();
+    const $dayContainer = $('#day-container');
 
     if (!month || !year) {
-        dayContainer.innerHTML = '';
+        $dayContainer.empty();
         return;
     }
 
     const daysInMonth = new Date(year, month, 0).getDate();
     const firstDayOfMonth = new Date(year, month - 1, 1).getDay();
-    const adjustedFirstDay = (firstDayOfMonth + 6) % 7; // Adjust for the week starting on Monday
+    const adjustedFirstDay = (firstDayOfMonth + 6) % 7;
 
-    dayContainer.innerHTML = '';
+    $dayContainer.empty();
 
     for (let i = 0; i < adjustedFirstDay; i++) {
-        const emptyDiv = document.createElement('div');
-        emptyDiv.className = 'day empty';
-        dayContainer.appendChild(emptyDiv);
+        $dayContainer.append($('<div>', { class: 'day empty' }));
     }
 
     for (let i = 1; i <= daysInMonth; i++) {
-        const dayDiv = document.createElement('div');
-        dayDiv.className = 'day';
-        dayDiv.innerText = String(i).padStart(2, '0');
-        dayDiv.onclick = () => selectDay(dayDiv);
-        dayContainer.appendChild(dayDiv);
+        const $dayDiv = $('<div>', {
+            class: 'day',
+            text: String(i).padStart(2, '0'),
+            click: function() {
+                selectDay($(this));
+            }
+        });
+        $dayContainer.append($dayDiv);
     }
 
     const totalSlots = adjustedFirstDay + daysInMonth;
     const remainingSlots = totalSlots % 7;
     if (remainingSlots > 0) {
         for (let i = remainingSlots; i < 7; i++) {
-            const emptyDiv = document.createElement('div');
-            emptyDiv.className = 'day empty';
-            dayContainer.appendChild(emptyDiv);
+            $dayContainer.append($('<div>', { class: 'day empty' }));
         }
     }
 }
 
-document.getElementById('birthdate-input').addEventListener('click', toggleCalendar);
+$('#birthdate-input').on('click', toggleCalendar);
 
-document.addEventListener('DOMContentLoaded', () => {addBirthdateField()})
+$(document).ready(function() {
+    addBirthdateField();
+});

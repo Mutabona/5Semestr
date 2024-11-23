@@ -1,20 +1,21 @@
-const menuItems = document.querySelectorAll('.main-menu li');
+$(document).ready(function() {
+    const $menuItems = $('.main-menu li');
 
-menuItems.forEach(item => {
-    const link = item.querySelector('a');
-    const img = link.querySelector('img');
+    $menuItems.each(function() {
+        const $item = $(this);
+        const $link = $item.find('a');
+        const $img = $link.find('img');
 
-    item.addEventListener('mouseover', () => {
-        if (!item.classList.contains('selected')) {
-            img.src = "images/menu/menuout.png";
-        }
-    });
+        $item.on('mouseover', function() {
+            if (!$item.hasClass('selected')) {
+                $img.attr('src', 'images/menu/menuout.png');
+            }
+        });
 
-    item.addEventListener('mouseout', () => {
-        if (!item.classList.contains('selected')) {
-            img.src = "images/menu/menuover.png";
-        }
+        $item.on('mouseout', function() {
+            if (!$item.hasClass('selected')) {
+                $img.attr('src', 'images/menu/menuover.png');
+            }
+        });
     });
 });
-
-

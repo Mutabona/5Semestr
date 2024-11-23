@@ -1,8 +1,8 @@
 function validateQuestion() {
-    var question = document.querySelector("textarea[name='q3']");
-    var words = question.value.split(" ");
+    var $question = $("textarea[name='q3']");
+    var words = $question.val().split(" ");
     if (words.length < 20) {
-        question.focus();
+        $question.focus();
         alert("Ну введи 20 слов, не западло же.");
         return false;
     }

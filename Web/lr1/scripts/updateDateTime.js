@@ -9,7 +9,8 @@ function updateDateTime() {
         ('0' + (now.getMonth() + 1)).slice(-2) + '.' +
         now.getFullYear() + ' ' +
         days[now.getDay()];
-    document.getElementById('datetime').textContent = formattedDateTime;
+    $('#datetime').text(formattedDateTime);
 }
+
 setInterval(updateDateTime, 1000);
 updateDateTime();

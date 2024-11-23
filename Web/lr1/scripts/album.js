@@ -1,15 +1,16 @@
 function showImage(src) {
-    var largePhotoDiv = document.createElement('div');
-    largePhotoDiv.className = 'large-photo-container';
-    largePhotoDiv.innerHTML = '<img src="' + src + '" alt="Большое фото">';
+    var largePhotoDiv = $('<div>', {
+        class: 'large-photo-container',
+        html: '<img src="' + src + '" alt="Большое фото">',
+    });
 
-    largePhotoDiv.addEventListener('click', function(event) {
-        if (event.target === largePhotoDiv) {
-            document.body.removeChild(largePhotoDiv);
+    largePhotoDiv.on('click', function(event) {
+        if (event.target === this) {
+            $(this).remove();
         }
     });
 
-    document.body.appendChild(largePhotoDiv);
+    $('body').append(largePhotoDiv);
 }
 
 function showImages() {
@@ -21,39 +22,40 @@ function showImages() {
         titles[i] = `Фото ${i}`;
     }
 
-    var album = document.getElementById('photo-album');
+    var album = $('#photo-album');
     for (var i = 0; i < 3; i++) {
-        var container = document.createElement('div');
-        container.className = 'container';
+        var container = $('<div>', { class: 'container' });
+
         for (var j = 1; j <= 5; j++) {
-            var card = document.createElement('div');
-            card.className = 'card';
+            var card = $('<div>', { class: 'card' });
 
-            var img = document.createElement('img');
-            img.className = 'album-image';
-            img.src = images[i*5+j];
-            img.alt = '';
-            img.title = titles[i*5+j];
-            img.onclick = (function(src) {
-                return function() {
-                    showImage(src);
-                };
-            })(images[i*5+j]);
+            var img = $('<img>', {
+                class: 'album-image',
+                src: images[i * 5 + j],
+                alt: '',
+                title: titles[i * 5 + j],
+                click: (function(src) {
+                    return function() {
+                        showImage(src);
+                    };
+                })(images[i * 5 + j]),
+            });
 
-            var textContainer = document.createElement('div');
-            var title = document.createElement('h1');
-            title.className = 'album-image-text';
-            title.textContent = titles[i*5+j];
+            var textContainer = $('<div>');
+            var title = $('<h1>', {
+                class: 'album-image-text',
+                text: titles[i * 5 + j],
+            });
 
-            textContainer.appendChild(title);
-            card.appendChild(img);
-            card.appendChild(textContainer);
-            container.appendChild(card);
+            textContainer.append(title);
+            card.append(img).append(textContainer);
+            container.append(card);
         }
-        album.appendChild(container);
+
+        album.append(container);
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
     showImages();
 });
