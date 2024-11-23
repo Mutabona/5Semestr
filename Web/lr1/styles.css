@@ -660,3 +660,112 @@ button {
     text-align: center;
     margin: 10px 0;
 }
+
+.photo-title {
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+    font-size: 1.5em;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+    user-select: none;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.left-arrow {
+    left: 20px;
+}
+
+.right-arrow {
+    right: 20px;
+}
+
+.popover {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    display: none;
+    z-index: 1000;
+}
+
+.hover-element {
+    position: relative;
+    display: inline-block;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -200px;
+    width: 100%;
+    height: 200%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20vw;
+    height: 8vh;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0px;
+}
+
+.confirm {
+    color: red;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.cancel {
+    color: blue;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.close:hover, .confirm:hover, .cancel:hover,
+.close:focus, .confirm:focus, .cancel:focus {
+    color: black;
+    text-decoration: none;
+}

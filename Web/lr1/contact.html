@@ -7,7 +7,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<script src="scripts/validateForm.js"></script>
 <nav class="main-menu">
     <ul>
         <li><a href="index.html"><img src="images/menu/menuover.png">Главная</a></li>
@@ -27,37 +26,31 @@
         <li><a href="history.html"><img src="images/menu/menuover.png">История просмотра</a></li>
     </ul>
     <div id="datetime" class="datetime"></div>
-    <script src="scripts/updateDateTime.js"></script>
-    <script src="scripts/cookieUtils.js"></script>
-    <script src="scripts/trackVisits.js"></script>
 </nav>
-<script src="scripts/menuImageChanger.js"></script>
-<script src="scripts/dropdownMenu.js"></script>
 <div class="content">
     <div class="container">
         <form action="mailto:k_dod1@mail.ru" method="post">
             <label>
-                <input name="fio" placeholder="ФИО" class="input-string" required/>
+                <input name="fio" placeholder="ФИО" class="input-string hover-element" required data-popover="3 слова через пробел"/>
                 <span class="error-message"></span>
             </label>
             <br>
             <label class="input-desc">Я мужик
-                <input type="radio" name="gender" value="male" required>
+                <input type="radio" name="gender" value="male" required class="hover-element" data-popover="Мужик? Нажимай!">
             </label>
             <label class="input-desc">Я дама
-                <input type="radio" name="gender" value="female" required>
+                <input type="radio" name="gender" value="female" required class="hover-element" data-popover="Дама? Нажимай!">
                 <span class="error-message"></span>
             </label>
             <br>
             <label class="birthdate-label">Дата рождения
-                <input id="birthdate-input" type="text" readonly placeholder="Дата" class="birthdate-input" required>
+                <input id="birthdate-input" type="text" readonly placeholder="Дата" class="birthdate-input hover-element" required data-popover="В календаре там выбери, ок?">
                 <span class="error-message"></span>
             </label>
             <div id="birthdate" class="calendar"></div>
-            <script src="scripts/calendar.js"></script>
             <br>
             <label class="input-desc">Возраст
-                <select name="age" size="1" required>
+                <select name="age" size="1" required class="hover-element" data-popover="Маленький или большой?">
                     <option value="" selected>Не выбран</option>
                     <option value="small">Большой</option>
                     <option value="big">Маленький</option>
@@ -66,11 +59,11 @@
             </label>
             <br>
             <label>
-                <input name="email" placeholder="Почта" class="input-string" type="email" required>
+                <input name="email" placeholder="Почта" class="input-string hover-element" type="email" required data-popover="Ну тут почта, очевидно же">
                 <span class="error-message"></span>
             </label>
             <label>
-                <input name="phone" placeholder="Телефон" class="input-string" type="tel" required>
+                <input name="phone" placeholder="Телефон" class="input-string hover-element" type="tel" required data-popover="+ и 9-11 цифр">
                 <span class="error-message"></span>
             </label>
             <br>
@@ -84,5 +77,14 @@
         <q class="lr"><i>Исследование возможностей языка разметки гипертекстов HTML и каскадных таблиц стилей CSS</i></q>
     </div>
 </footer>
+
+<script src="scripts/updateDateTime.js"></script>
+<script src="scripts/cookieUtils.js"></script>
+<script src="scripts/trackVisits.js"></script>
+<script src="scripts/menuImageChanger.js"></script>
+<script src="scripts/dropdownMenu.js"></script>
+<script src="scripts/popover.js"></script>
+<script src="scripts/validateForm.js"></script>
+<script src="scripts/calendar.js"></script>
 </body>
 </html>

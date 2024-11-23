@@ -1,50 +1,80 @@
-function showImage(src) {
-    var largePhotoDiv = $('<div>', {
+let currentIndex = 0;
+const images = [];
+const titles = [];
+
+for (let i = 1; i <= 15; i++) {
+    images.push(`images/album/a (${i}).JPEG`);
+    titles.push(`Фото ${i}`);
+}
+
+function showImage(index) {
+    const largePhotoDiv = $('<div>', {
         class: 'large-photo-container',
-        html: '<img src="' + src + '" alt="Большое фото">',
+        html: `
+            <img src="${images[index]}" alt="Большое фото">
+            <div class="photo-title">${titles[index]}</div>
+            <div class="arrow left-arrow">&#9664;</div>
+            <div class="arrow right-arrow">&#9654;</div>
+        `,
     });
 
     largePhotoDiv.on('click', function(event) {
-        if (event.target === this) {
-            $(this).remove();
+        if ($(event.target).hasClass('large-photo-container')) {
+            $(this).fadeOut(300, function() {
+                $(this).remove();
+            });
         }
     });
 
-    $('body').append(largePhotoDiv);
+    largePhotoDiv.find('.left-arrow').on('click', function(event) {
+        event.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateLargePhoto(largePhotoDiv, currentIndex);
+    });
+
+    largePhotoDiv.find('.right-arrow').on('click', function(event) {
+        event.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        updateLargePhoto(largePhotoDiv, currentIndex);
+    });
+
+    $('body').append(largePhotoDiv.hide().fadeIn(300));
+}
+
+function updateLargePhoto(container, index) {
+    container.find('img').fadeOut(300, function() {
+        $(this).attr('src', images[index]).fadeIn(300);
+    });
+    container.find('.photo-title').fadeOut(300, function() {
+        $(this).text(titles[index]).fadeIn(300);
+    });
 }
 
 function showImages() {
-    var images = [];
-    var titles = [];
+    const album = $('#photo-album');
 
-    for (var i = 1; i < 16; i++) {
-        images[i] = `images/album/a (${i}).JPEG`;
-        titles[i] = `Фото ${i}`;
-    }
+    for (let i = 0; i < 3; i++) {
+        const container = $('<div>', { class: 'container' });
 
-    var album = $('#photo-album');
-    for (var i = 0; i < 3; i++) {
-        var container = $('<div>', { class: 'container' });
+        for (let j = 1; j <= 5; j++) {
+            const index = i * 5 + j - 1;
+            const card = $('<div>', { class: 'card' });
 
-        for (var j = 1; j <= 5; j++) {
-            var card = $('<div>', { class: 'card' });
-
-            var img = $('<img>', {
+            const img = $('<img>', {
                 class: 'album-image',
-                src: images[i * 5 + j],
+                src: images[index],
                 alt: '',
-                title: titles[i * 5 + j],
-                click: (function(src) {
-                    return function() {
-                        showImage(src);
-                    };
-                })(images[i * 5 + j]),
+                title: titles[index],
+                click: function() {
+                    currentIndex = index;
+                    showImage(index);
+                },
             });
 
-            var textContainer = $('<div>');
-            var title = $('<h1>', {
+            const textContainer = $('<div>');
+            const title = $('<h1>', {
                 class: 'album-image-text',
-                text: titles[i * 5 + j],
+                text: titles[index],
             });
 
             textContainer.append(title);
