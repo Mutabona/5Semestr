@@ -1,10 +1,10 @@
 docker volume create mongo-data
 docker run -d --name mongo -v mongo-data:/data/db -p 27017:27017 mongo
 
-docker exec -it mongo mongodump --uri mongodb://localhost:27017/test --gzip --archive=mongo.archive
+docker exec -it mongo mongodump --uri mongodb://localhost:27017 --gzip --archive=mongo.archive
 docker cp mongo:/mongo.archive mongo.archive
 
-docker cp mongo.archive mongo:/test.archive
+docker cp mongo.archive mongo:/mongo.archive
 docker exec -it mongo mongorestore --uri mongodb://localhost:27017 --gzip --archive=mongo.archive
 
 
@@ -155,4 +155,69 @@ db.films.find(
   { title: 1, director: 1, _id: 0 }
 );
 
+
+db.films.updateOne(
+  { director: "Кристофер Нолан" },
+  { $addToSet: { actors: "Донец Николай" } }
+);
+
+db.films.updateMany(
+  { releaseDate: { $lt: "2000-01-01" } },
+  { $set: { status: "старый фильм" } }
+);
+
+db.films.replaceOne(
+  { title: "Интерстеллар" },
+  {
+    title: "Интерстеллар",
+    description: "Эпическое путешествие через космос и время.",
+    genre: ["Научная фантастика", "Приключения"],
+    releaseDate: "2014-11-07",
+    director: "Кристофер Нолан",
+    actors: ["Мэттью МакКонахи", "Энн Хэтэуэй", "Джессика Честейн"],
+    rating: 8.6
+  }
+);
+
+db.films.bulkWrite([
+  {
+    updateOne: {
+      filter: { title: "Начало" },
+      update: { $set: { rating: 8.8 } }
+    }
+  },
+  {
+    updateMany: {
+      filter: { releaseDate: {$gt: "2010-01-01"}},
+      update: { $set: { recommended: true } }
+    }
+  },
+  {
+    replaceOne: {
+      filter: { title: "Титаник" },
+      replacement: {
+        title: "Титаник",
+        description: "Эпическая романтическая драма о легендарной катастрофе.",
+        genre: ["Драма", "Романс"],
+        releaseDate: "1997-12-19",
+        director: "Джеймс Кэмерон",
+        actors: ["Леонардо ДиКаприо", "Кейт Уинслет", "Билли Зейн"],
+        rating: 7.8
+      }
+    }
+  }
+]);
+
+db.films.deleteOne({ title: "Титаник" });
+
+db.films.deleteMany({ releaseDate: { $lt: "1990-01-01" } });
+
+db.films.bulkWrite([
+ {
+ deleteOne: { filter: { director: "Ридли Скотт" } }
+ },
+ {
+ deleteMany: { filter: { status: { $exists: true } } }
+ }
+]);
 
