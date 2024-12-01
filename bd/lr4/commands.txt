@@ -1,11 +1,10 @@
 docker volume create mongo-data
 docker run -d --name mongo -v mongo-data:/data/db -p 27017:27017 mongo
 
-docker exec -it mongo mongodump --uri mongodb://localhost:27017/test --gzip --archive=test.archive
+docker exec -it mongo mongodump --uri mongodb://localhost:27017/test --gzip --archive=mongo.archive
+docker cp mongo:/mongo.archive mongo.archive
 
-docker cp mongo:/dump.archive /path/to/backup/yourdatabase.archive
-
-docker cp /path/to/backup/test.archive mongo:/test.archive
+docker cp mongo.archive mongo:/test.archive
 docker exec -it mongo mongorestore --uri mongodb://localhost:27017 --gzip --archive=mongo.archive
 
 
