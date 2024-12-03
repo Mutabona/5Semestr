@@ -1,0 +1,775 @@
+$main-color: #5957f9
+$base-spacing: 20px
+$transition-duration: 0.3s
+$screen-size: 600px
+
+@mixin flex-center
+    display: flex
+    justify-content: center
+    align-items: center
+
+@function rem($pixels)
+    @return $pixels / 16 * 1rem
+
+@mixin responsive-font-size($font-size)
+    @if $screen-size > 768px
+        font-size: rem($font-size * 1.2)
+    @else
+        font-size: rem($font-size)
+
+body
+    font-family: "Franklin Gothic Heavy", cursive
+    background-color: black
+    margin: 0
+    padding: 0
+    min-height: 99vh
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+.main-menu
+    background-color: #131313
+    text-align: center
+    width: 100%
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 2
+    @include flex-center
+    padding: 0 rem(20)
+
+    ul
+        margin: 0
+        padding: 0
+        display: flex
+        list-style: none
+        justify-content: center
+
+        li
+            position: relative
+
+            a
+                color: #f2f2f2
+                text-align: center
+                padding: rem(20)
+                @include responsive-font-size(24)
+                text-decoration: none
+                display: flex
+                align-items: center
+
+                img
+                    width: rem(24)
+                    height: rem(24)
+                    margin-right: rem(10)
+                    transition: transform $transition-duration
+
+                &:hover img
+                    transform: scale(1.2)
+
+            &.selected a
+                color: $main-color
+                @include responsive-font-size(28)
+
+            &:hover .dropdown
+                display: block
+
+            .dropdown
+                display: none
+                position: absolute
+                top: 100%
+                left: 0
+                background-color: #131313
+                min-width: rem(200)
+                width: 100%
+                z-index: 3
+
+                li
+                    float: none
+                    border: 1px solid #575757
+
+                    a
+                        padding: rem(12) rem(16)
+                        @include responsive-font-size(20)
+                        color: white !important
+                        text-decoration: none
+                        display: block
+                        background-color: #131313
+
+    .datetime
+        color: #f2f2f2
+        @include responsive-font-size(18)
+        padding: rem(10) rem(20)
+        text-align: center
+
+.content
+    flex: 1
+    margin-top: rem(150)
+    margin-bottom: rem(50)
+    padding: rem(50)
+    z-index: 1
+
+
+
+footer
+    background-color: $main-color
+    text-align: center
+    width: 100%
+    font-size: 19px
+    font-weight: bold
+    margin-top: 0
+    height: 4vh
+    position: relative
+    bottom: 0
+    flex-shrink: 0
+
+
+.container
+    display: flex
+    align-items: center
+    justify-content: center
+    max-width: 1200px
+    margin: 0 auto
+    padding: 0 20px
+
+
+.card
+    background-color: #fff
+    width: 500px
+    border-radius: 30px
+    padding: 20px
+    text-align: left
+
+
+.profile-image
+    border-radius: 15px
+    border: 8px solid $main-color
+    position: relative
+    width: 484px
+    text-align: center
+
+
+.name
+    font-size: 18px
+    font-weight: bold
+    color: black
+    text-align: left
+
+
+.group
+    font-size: 16px
+    color: black
+    text-align: left
+
+
+.lr
+    font-size: 14px
+    color: white
+    text-align: left
+
+
+.the-great-quote
+    font-size: 40px
+    color: white
+    text-align: left
+    quotes: "„" "“"
+    margin: auto
+    width: 40ch
+    animation: floater 1.5s infinite linear alternate
+
+
+@keyframes floater
+    0%
+        transform: translateY(-10%)
+    50%
+        transform: translateY(10%)
+
+
+
+
+.story
+    font-size: 40px
+    color: white
+    text-align: left
+    margin: 60px
+    padding: 10px 50px 20px
+    width: 50vw
+
+
+.story-image
+    border-radius: 15px
+    border: 8px solid $main-color
+    position: relative
+    width: 450px
+    text-align: center
+    margin-left: 50px
+    margin-right: 50px
+
+
+.menu
+    top: 150px
+    text-align: left
+    position: fixed
+    z-index: 2
+
+
+.menu ol
+    margin: 5px
+    text-align: left
+
+
+.menu ol li
+    list-style: none
+    margin: 5px
+
+
+.menu ol li a
+    color: #f2f2f2
+    text-align: left
+    font-size: 24px
+    text-decoration: none
+    margin: 5px
+
+
+.menu ol li a:active
+    color: $main-color
+    text-align: left
+    font-size: 28px
+    text-decoration: none
+    margin: 5px
+
+
+.block
+    background-color: white
+    width: auto
+    border: 10px solid $main-color
+    border-radius: 50px
+    padding: 20px
+    margin-bottom: 50px
+
+
+.inter-image
+    border-radius: 15px
+    border: 8px solid $main-color
+    position: relative
+    width: 450px
+    text-align: center
+
+
+.text-container
+    width: 50ch
+    margin: 10px
+
+
+.main-item
+    font-size: 50px
+    color: black
+    text-align: left
+    margin-bottom: 10px
+    margin-top: 0
+
+
+.sub-item
+    font-size: 28px
+    color: black
+    text-align: left
+    margin-bottom: 5px
+    margin-top: 0
+
+
+.inter-text
+    font-size: 18px
+    color: grey
+    text-align: left
+    margin-bottom: 30px
+    margin-top: 0
+
+.album td
+    border: 5px solid $main-color
+    border-radius: 10px
+
+
+.album-image
+    position: relative
+    max-height: 50%
+    max-width: 100%
+
+
+.album-image-text
+    font-size: 26px
+    color: black
+    text-align: center
+    width: 100%
+    margin-top: auto
+
+
+.university
+    font-size: 30px
+    color: white
+    margin: 0
+    text-align: center
+
+
+.disciplines
+    margin-top: 30px
+    border-collapse: collapse
+
+.disciplines caption
+    font-size: 30px
+    color: white
+    border: 5px solid $main-color
+    border-collapse: collapse
+
+.disciplines td
+    border: 5px solid $main-color
+    font-size: 30px
+    color: white
+    border-collapse: collapse
+
+
+.disciplines th
+    border: 5px solid $main-color
+    font-size: 30px
+    color: white
+    border-collapse: collapse
+
+
+form
+    margin: auto
+    width: 100%
+
+
+optgroup
+    color: black
+    font-size: 40px
+    margin-bottom: 20px
+    margin-top: 20px
+
+
+option
+    color: black
+    font-size: 36px
+    margin-bottom: 20px
+    margin-top: 20px
+
+
+select
+    margin: auto
+    font-size: 35px
+    border-radius: 10px
+    text-align: center
+    width: 48%
+
+
+.calendar
+    display: none
+    position: absolute
+    background-color: #fff
+    border: 1px solid #ccc
+    border-radius: 10px
+    padding: 10px
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15)
+    z-index: 1000
+    width: 100%
+    max-width: 300px
+    top: 60px
+    left: 0
+
+
+.header-container
+    display: flex
+    justify-content: space-between
+    margin-bottom: 10px
+
+
+.header-container select
+    font-size: 25px
+    border-radius: 10px
+    text-align: center
+    width: 48%
+
+
+.header-container option
+    background-color: #f0f0f0
+    color: black
+    padding: 5px
+    border-radius: 5px
+    margin: 2px 0
+    font-size: 25px
+
+
+.header-container option:hover
+    background-color: $main-color
+    color: white
+
+
+.calendar .weekday-container
+    display: flex
+    justify-content: space-between
+    margin-bottom: 5px
+
+
+.calendar .weekday
+    width: calc(100% / 7)
+    text-align: center
+    font-weight: bold
+    padding: 5px
+
+
+.calendar .day-container
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+
+
+.calendar .day
+    width: calc(100% / 7 - 4px)
+    height: 30px
+    margin: 2px 0
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 5px
+    cursor: pointer
+    background-color: #f0f0f0
+
+
+.calendar .day.empty
+    visibility: hidden
+
+
+.calendar .day:hover, .calendar .day.selected
+    background-color: $main-color
+    color: white
+
+
+.calendar label
+    display: block
+    margin-bottom: 5px
+    font-weight: bold
+
+
+.button-container
+    display: flex
+    justify-content: space-between
+    margin-top: 10px
+
+
+.calendar button
+    padding: 10px 20px
+    border: none
+    border-radius: 10px
+    background-color: $main-color
+    color: white
+    cursor: pointer
+    font-size: 20px
+
+
+.calendar button:hover
+    background-color: #0056b3
+
+
+#birthdate-input
+    cursor: pointer
+
+
+.input-string
+    font-size: 40px
+    border-radius: 10px
+    color: black
+    text-align: center
+    width: 100%
+    margin-top: 10px
+
+
+.input-desc
+    font-size: 40px
+    border-radius: 10px
+    color: white
+    text-align: left
+    margin-bottom: 20px
+    margin-top: 20px
+    display: inline-block
+    width: 100%
+    vertical-align: middle
+
+
+input[type=radio]
+    border: 0
+    width: 50px
+    height: 2em
+    margin-bottom: 0
+    margin-top: 0
+
+
+.submit-button
+    background-color: $main-color
+    font-size: 20px
+    color: white
+    border-radius: 10px
+    height: 50px
+    width: 100%
+    margin-bottom: 20px
+    margin-top: 20px
+    cursor: pointer
+
+
+.submit-button:disabled 
+    background-color: grey
+    cursor: not-allowed
+    font-size: 20px
+    color: white
+    border-radius: 10px
+    height: 50px
+    width: 100%
+    margin-bottom: 20px
+    margin-top: 20px
+
+
+.birthdate-input 
+    font-size: 40px
+    border-radius: 10px
+    color: black
+    text-align: center
+    width: 30%
+    cursor: pointer
+    display: inline-block
+    vertical-align: middle
+    margin-left: 10px
+    margin-bottom: 10px
+    margin-top: 10px
+    position: relative
+
+
+.birthdate-label 
+    font-size: 40px
+    color: white
+    text-align: left
+    display: inline-block
+    width: 100%
+    vertical-align: middle
+
+
+textarea
+    color: black
+    margin-bottom: 20px
+    margin-top: 20px
+    font-size: 40px
+    float: right
+    border-radius: 10px
+    text-align: left
+
+
+.reset-button
+    background-color: red
+    color: white
+    border-radius: 10px
+    font-size: 20px
+    height: 50px
+
+
+input.invalid, textarea.invalid, select.invalid 
+    border-color: red
+    background-color: #ffe6e6
+
+
+input.valid, textarea.valid, select.valid 
+    border-color: green
+    background-color: #e6ffe6
+
+
+.error-message 
+    color: red
+    font-size: 26px
+    display: none
+
+
+button:disabled 
+    background-color: grey
+    cursor: not-allowed
+
+
+button 
+    background-color: blue
+    color: white
+    padding: 10px 15px
+    border: none
+    border-radius: 5px
+    cursor: pointer
+
+
+.large-photo-container 
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.8)
+    display: flex
+    justify-content: center
+    align-items: center
+    z-index: 1000
+
+
+.large-photo-container img 
+    max-width: 90%
+    max-height: 90%
+
+
+.table-container 
+    display: flex
+    justify-content: center
+
+
+.table-wrapper 
+    flex: 1
+    margin: 0
+
+
+.table-container 
+    display: flex
+    justify-content: space-between
+    width: 90%
+    margin: 20px auto
+
+
+.table-wrapper 
+    flex: 1
+    margin: 10px
+
+
+.table 
+    width: 100%
+    border-collapse: collapse
+    color: #fff
+
+
+.table, .table th, .table td 
+    border: 1px solid #fff
+    padding: 10px
+    text-align: left
+
+
+.table th 
+    background-color: #333
+    color: #fff
+
+
+.table td 
+    background-color: #444
+    color: #fff
+
+
+.table-title 
+    color: #fff
+    text-align: center
+    margin: 10px 0
+
+
+.photo-title 
+    position: absolute
+    bottom: 20px
+    color: #fff
+    font-size: 1.5em
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7)
+
+
+.arrow 
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    color: #fff
+    font-size: 2em
+    cursor: pointer
+    user-select: none
+    padding: 10px
+    background: rgba(0, 0, 0, 0.5)
+    border-radius: 50%
+    transition: background 0.3s ease
+
+
+.arrow:hover 
+    background: rgba(0, 0, 0, 0.8)
+
+
+.left-arrow 
+    left: 20px
+
+
+.right-arrow 
+    right: 20px
+
+
+.popover 
+    position: absolute
+    background-color: #333
+    color: #fff
+    padding: 5px 10px
+    border-radius: 5px
+    white-space: nowrap
+    display: none
+    z-index: 1000
+
+
+.hover-element 
+    position: relative
+    display: inline-block
+
+
+.modal 
+    display: none
+    position: fixed
+    z-index: 1
+    left: 0
+    top: -200px
+    width: 100%
+    height: 200%
+    overflow: auto
+    background-color: rgba(0, 0, 0, 0.4)
+    backdrop-filter: blur(5px)
+    -webkit-backdrop-filter: blur(5px)
+
+
+.modal-content 
+    background-color: #fefefe
+    margin: 15% auto
+    padding: 20px
+    border: 1px solid #888
+    width: 20vw
+    height: 8vh
+    border-radius: 10px
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3)
+    text-align: center
+
+
+.close 
+    color: #aaa
+    float: right
+    font-size: 28px
+    font-weight: bold
+    cursor: pointer
+    margin: 0
+
+
+.confirm 
+    color: red
+    float: right
+    font-size: 28px
+    font-weight: bold
+    cursor: pointer
+    margin: 10px
+
+
+.cancel 
+    color: blue
+    float: left
+    font-size: 28px
+    font-weight: bold
+    cursor: pointer
+    margin: 10px
+
+
+.close:hover, .confirm:hover, .cancel:hover,
+.close:focus, .confirm:focus, .cancel:focus 
+    color: black
+    text-decoration: none
+
