@@ -9,7 +9,8 @@ public class MatrixCounterTests
 
     public MatrixCounterTests()
     {
-        _matrix = new MatrixCounter();
+        var builder = new MatrixCounter.MatrixCounterBuilder();
+        _matrix = builder.Build();
     }
     
     [Fact]

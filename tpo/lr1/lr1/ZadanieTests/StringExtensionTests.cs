@@ -11,7 +11,6 @@ namespace ZadanieTests
     {
         private readonly ILogger _logger;
         private static readonly string LogFilePath = "C:\\Users\\k_dod\\repos\\5Semestr\\tpo\\lr3\\StringExtensionsTestsLogs\\log.log";
-
         
         public StringExtensionTests()
         {

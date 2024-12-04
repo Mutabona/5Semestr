@@ -2,6 +2,8 @@
 
 public class MatrixCounter
 {
+    private MatrixCounter() {}
+    
     public int CountNegativeNumbersInRowsWithZeros(List<List<int>> data)
     {
         int result = 0;
@@ -15,5 +17,13 @@ public class MatrixCounter
         }
 
         return result;
+    }
+
+    public class MatrixCounterBuilder()
+    {
+        public MatrixCounter Build()
+        {
+            return new MatrixCounter();
+        }
     }
 }
