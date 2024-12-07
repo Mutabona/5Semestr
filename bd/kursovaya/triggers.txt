@@ -1,0 +1,82 @@
+CREATE OR REPLACE FUNCTION generate_uuid()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW."Id" IS NULL THEN
+        NEW."Id" := uuid_generate_v4();
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_generate_uuid
+BEFORE INSERT ON "Users"
+FOR EACH ROW
+EXECUTE FUNCTION generate_uuid();
+
+CREATE TRIGGER trigger_generate_uuid
+BEFORE INSERT ON "Patients"
+FOR EACH ROW
+EXECUTE FUNCTION generate_uuid();
+
+CREATE TRIGGER trigger_generate_uuid
+BEFORE INSERT ON "Histories"
+FOR EACH ROW
+EXECUTE FUNCTION generate_uuid();
+
+create trigger trigger_generate_uuid
+    before insert
+    on "Examinations"
+    for each row
+execute procedure generate_uuid();
+
+create trigger trigger_generate_uuid
+    before insert
+    on "Appointments"
+    for each row
+execute procedure generate_uuid();
+
+create trigger trigger_generate_uuid
+    before insert
+    on "Marks"
+    for each row
+execute procedure generate_uuid();
+
+create trigger trigger_generate_uuid
+    before insert
+    on "Analyzes"
+    for each row
+execute procedure generate_uuid();
+
+create function check_user_role() returns trigger
+    language plpgsql
+as
+$$
+BEGIN
+    IF (SELECT "Role" FROM "Users" WHERE "Id" = NEW."UserId") <> 2 THEN
+        RAISE EXCEPTION 'Пользователь не является врачом';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
+alter function check_user_role() owner to postgres;
+
+CREATE TRIGGER trigger_check_user_role
+BEFORE INSERT ON "Histories"
+FOR EACH ROW
+EXECUTE FUNCTION check_user_role();
+
+CREATE OR REPLACE FUNCTION check_user_role_for_mark()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF (SELECT "Role" FROM "Users" WHERE "Id" = NEW."UserId") <> 3 THEN
+        RAISE EXCEPTION 'Пользователь не является медсестрой';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsq
+
+CREATE TRIGGER trigger_check_user_role_for_mark
+BEFORE INSERT ON "Marks"
+FOR EACH ROW
+EXECUTE FUNCTION check_user_role_for_mark();
