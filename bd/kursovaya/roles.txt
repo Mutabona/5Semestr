@@ -1,0 +1,22 @@
+create role Admins;
+
+create role Doctors;
+
+create role Sisters;
+
+GRANT SELECT on "Analyzes", "Appointments", "Examinations", "Histories", "Marks", "Patients" to doctors, sisters;
+
+GRANT SELECT, INSERT, UPDATE, DELETE on "Users" to admins;
+
+ALTER ROLE admins with replication;
+
+GRANT INSERT on "Analyzes", "Marks" to sisters;
+
+GRANT INSERT on "Patients", "Histories", "Examinations", "Appointments" to doctors;
+
+GRANT UPDATE on "Histories", "Examinations" to doctors;
+
+GRANT DELETE on "Examinations" to doctors;
+
+SET ROLE dev1;
+SET ROLE NONE;
