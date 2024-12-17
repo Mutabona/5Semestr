@@ -3,6 +3,7 @@
     <nav>
       <router-link to="/">Очень полезная форма</router-link>
       <router-link to="/tasks">Задачки</router-link>
+      <router-link to="/about">Обо мне</router-link>
     </nav>
     <div class="content">
       <router-view></router-view>
